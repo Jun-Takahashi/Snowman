@@ -13,13 +13,7 @@ public class PlayerStatus : MonoBehaviour
     public float HeightB;
     public float WidthR;
     public float WidthL;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -59,7 +53,7 @@ public class PlayerStatus : MonoBehaviour
 
         #region 残機管理
 
-        if (Hp==10)
+        if (Hp==0)
         {
             Destroy(gameObject);
         }
@@ -70,8 +64,23 @@ public class PlayerStatus : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(Bullet,this.transform.position,Quaternion.identity);
+            GameObject instanceB = Instantiate(Bullet,this.transform.position,Quaternion.identity);
+            Firing script = instanceB.GetComponent<Firing>();
+            script.SetTag(true);
         }
         #endregion
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Hp--;
+        }
+        if(collision.gameObject.tag == "BulletE")
+        {
+            Destroy(collision.gameObject);
+            Hp--;
+        }
     }
 }

@@ -46,11 +46,11 @@ public class Firing : MonoBehaviour
         #region エネミー弾移動処理
         if(!Player)
         {
-            //上へGO
-            transform.position += new Vector3(0, 0, 1) * Speed;
+            //下へGO
+            transform.position += (new Vector3(0, 0, -1) * Speed) * Time.deltaTime;
 
             //画面端ぃ→消す
-            if (transform.position.z >= HeightB)
+            if (transform.position.z <= HeightB)
             {
                 Destroy(gameObject);
             }
