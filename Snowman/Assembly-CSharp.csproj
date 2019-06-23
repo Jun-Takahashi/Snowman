@@ -53,9 +53,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Sakai\Scripts\CoilManager.cs" />
+     <Compile Include="Assets\Sakai\Scripts\CoilMove.cs" />
+     <Compile Include="Assets\Sakai\Scripts\DeathPlayer.cs" />
+     <Compile Include="Assets\Sakai\Scripts\ScrollScript.cs" />
+     <Compile Include="Assets\Sakai\Scripts\SparkLiner.cs" />
      <Compile Include="Assets\Scripts\BossScripts\BossManager.cs" />
      <Compile Include="Assets\Scripts\BossScripts\BossMove.cs" />
      <Compile Include="Assets\Scripts\CharacterAttribute.cs" />
+     <Compile Include="Assets\Takahashi\Scripts\EnemyFac.cs" />
+     <Compile Include="Assets\Takahashi\Scripts\EnemyStatus.cs" />
+     <Compile Include="Assets\Takahashi\Scripts\Firing.cs" />
+     <Compile Include="Assets\Takahashi\Scripts\PlayerStatus.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/sakai Yuu/Desktop/チーム制作（シューティング_6_14）/Snowman/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
