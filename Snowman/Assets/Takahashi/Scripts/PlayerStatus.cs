@@ -8,13 +8,12 @@ public class PlayerStatus : MonoBehaviour
     public int Hp;
     [SerializeField, Header("プレイヤーの弾")]
     public GameObject Bullet;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    [SerializeField, Header("画面端")]
+    public float HeightU;
+    public float HeightB;
+    public float WidthR;
+    public float WidthL;
+    
     // Update is called once per frame
     void Update()
     {
@@ -25,11 +24,36 @@ public class PlayerStatus : MonoBehaviour
 
         transform.position += new Vector3(x, 0, z);
 
+        #region　画面内におさめる
+        float posX = transform.position.x;
+        float posY = transform.position.y;
+        float posZ = transform.position.z;
+
+        if (transform.position.z >= HeightU)
+        {
+            posZ = HeightU;
+        }
+        if (transform.position.z <= HeightB)
+        {
+            posZ = HeightB;
+        }
+        if (transform.position.x <= WidthL)
+        {
+            posX = WidthL;
+        }
+        if (transform.position.x >= WidthR)
+        {
+            posX = WidthR;
+        }
+
+        transform.position = new Vector3(posX, posY, posZ);
+        #endregion
+
         #endregion
 
         #region 残機管理
 
-        if (Hp==10)
+        if (Hp==0)
         {
             Destroy(gameObject);
         }
@@ -38,10 +62,25 @@ public class PlayerStatus : MonoBehaviour
 
         #region 射撃管理
 
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(Bullet,this.transform.position,Quaternion.identity);
+            GameObject instanceB = Instantiate(Bullet,this.transform.position,Quaternion.identity);
+            Firing script = instanceB.GetComponent<Firing>();
+            script.SetTag(true);
         }
         #endregion
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Hp--;
+        }
+        if(collision.gameObject.tag == "BulletE")
+        {
+            Destroy(collision.gameObject);
+            Hp--;
+        }
     }
 }
