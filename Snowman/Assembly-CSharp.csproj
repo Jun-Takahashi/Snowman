@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ooishi\script\destry.cs" />
      <Compile Include="Assets\Sakai\Scripts\BossShot.cs" />
      <Compile Include="Assets\Sakai\Scripts\bulletMove.cs" />
      <Compile Include="Assets\Sakai\Scripts\CoilManager.cs" />
@@ -64,10 +65,12 @@
      <Compile Include="Assets\Scripts\BossScripts\BossManager.cs" />
      <Compile Include="Assets\Scripts\BossScripts\BossMove.cs" />
      <Compile Include="Assets\Scripts\CharacterAttribute.cs" />
+     <Compile Include="Assets\Takahashi\Scripts\DiagonalEStatus.cs" />
      <Compile Include="Assets\Takahashi\Scripts\EnemyFac.cs" />
      <Compile Include="Assets\Takahashi\Scripts\EnemyStatus.cs" />
      <Compile Include="Assets\Takahashi\Scripts\Firing.cs" />
      <Compile Include="Assets\Takahashi\Scripts\PlayerStatus.cs" />
+     <Compile Include="Assets\Takahashi\Scripts\Screen.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/sakai Yuu/Desktop/チーム制作（シューティング_6_14）/Snowman/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
