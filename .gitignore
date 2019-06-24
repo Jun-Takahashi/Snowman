@@ -106,3 +106,47 @@ sysinfo.txt
 
 # Builds
 *.apk
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+*.tmp
+*.pidb.meta
+*.apk
+*.htm
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+!*.obj
+*.ide-wal
+*.ide-shm
+*.ide
+*.lock
+2019Early/Assets/Nakano/shader/transition.mat
+2019Early/Assets/Nakano/shader/Mat/New Material.mat
