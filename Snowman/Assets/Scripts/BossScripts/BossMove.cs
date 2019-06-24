@@ -33,7 +33,7 @@ public class BossMove : MonoBehaviour
     private Rigidbody bossRb;
 
     [SerializeField]
-    private bool arrived; //到着フラグ
+    public bool arrived; //到着フラグ
 
     [SerializeField, Header("移動までの待機時間")] //次の行動までの待ち時間
     private float interval = 6f;
@@ -61,7 +61,7 @@ public class BossMove : MonoBehaviour
     void Update()
     {
         velocity = Vector3.zero;
-        Debug.Log(arrived);
+        //Debug.Log(arrived);
         //Debug.Log(count);
         //Debug.Log(destination);
         if (count >= MaxNum) //最大値を超えたらリセット
@@ -94,6 +94,7 @@ public class BossMove : MonoBehaviour
         if (Vector3.Distance(transform.position, destination) < 0.5f) //目的地に着いたか
         {
             arrived = true; //着いた
+
         }
     }
 

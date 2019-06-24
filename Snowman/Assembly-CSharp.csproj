@@ -53,11 +53,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Sakai\Scripts\BossShot.cs" />
+     <Compile Include="Assets\Sakai\Scripts\bulletMove.cs" />
      <Compile Include="Assets\Sakai\Scripts\CoilManager.cs" />
      <Compile Include="Assets\Sakai\Scripts\CoilMove.cs" />
      <Compile Include="Assets\Sakai\Scripts\DeathPlayer.cs" />
      <Compile Include="Assets\Sakai\Scripts\ScrollScript.cs" />
      <Compile Include="Assets\Sakai\Scripts\SparkLiner.cs" />
+     <Compile Include="Assets\Sakai\Scripts\Title.cs" />
      <Compile Include="Assets\Scripts\BossScripts\BossManager.cs" />
      <Compile Include="Assets\Scripts\BossScripts\BossMove.cs" />
      <Compile Include="Assets\Scripts\CharacterAttribute.cs" />

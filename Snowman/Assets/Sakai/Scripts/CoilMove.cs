@@ -22,9 +22,9 @@ public class CoilMove : MonoBehaviour
     {
         if (MoveFlag)
         {
-            transform.position = Vector3.Lerp(transform.position, distance, num);
+            transform.root.gameObject.transform.position = Vector3.Lerp(transform.root.gameObject.transform.position, distance, num);
         }
-        if (Vector3.Distance(transform.position, distance) < 0.5f && !SparkFlag)
+        if (Vector3.Distance(transform.root.gameObject.transform.position, distance) < 0.5f && !SparkFlag)
         {
             SparkFlag = true;
         }

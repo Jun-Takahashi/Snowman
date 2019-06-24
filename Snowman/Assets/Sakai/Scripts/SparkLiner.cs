@@ -40,7 +40,7 @@ public class SparkLiner : MonoBehaviour
         {
             NewCoil();
         }
-        if (coilInstance != null && coilInstance.GetComponent<CoilMove>().SparkFlag)
+        if (coilInstance != null && coilInstance.transform.GetChild(0).GetComponent<CoilMove>().SparkFlag)
         {
             timeElapsed += Time.deltaTime;
             if (timeElapsed > SparkTime)
@@ -58,12 +58,12 @@ public class SparkLiner : MonoBehaviour
 
     void Shot(GameObject coil)
     {
-        coil.GetComponent<CoilMove>().Move(coilPositions.transform.GetChild(Random.Range(0, 2)).transform.position, 0.2f);
+        coil.transform.GetChild(0).GetComponent<CoilMove>().Move(coilPositions.transform.GetChild(Random.Range(0, 2)).transform.position, 0.2f);
     }
 
     void Sparking(GameObject coil)
     {
-        coil.GetComponent<CoilMove>().Spark(ThunderPower);
+        coil.transform.GetChild(0).GetComponent<CoilMove>().Spark(ThunderPower);
     }
 
     void NewCoil()
