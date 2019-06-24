@@ -8,11 +8,6 @@ public class PlayerStatus : MonoBehaviour
     public int Hp;
     [SerializeField, Header("プレイヤーの弾")]
     public GameObject Bullet;
-    [SerializeField, Header("画面端")]
-    public float HeightU;
-    public float HeightB;
-    public float WidthR;
-    public float WidthL;
     
     // Update is called once per frame
     void Update()
@@ -29,21 +24,21 @@ public class PlayerStatus : MonoBehaviour
         float posY = transform.position.y;
         float posZ = transform.position.z;
 
-        if (transform.position.z >= HeightU)
+        if (transform.position.z >= Screen.HeightU)
         {
-            posZ = HeightU;
+            posZ = Screen.HeightU;
         }
-        if (transform.position.z <= HeightB)
+        if (transform.position.z <= Screen.HeightB)
         {
-            posZ = HeightB;
+            posZ = Screen.HeightB;
         }
-        if (transform.position.x <= WidthL)
+        if (transform.position.x <= Screen.WidthL)
         {
-            posX = WidthL;
+            posX = Screen.WidthL;
         }
-        if (transform.position.x >= WidthR)
+        if (transform.position.x >= Screen.WidthR)
         {
-            posX = WidthR;
+            posX = Screen.WidthR;
         }
 
         transform.position = new Vector3(posX, posY, posZ);
@@ -66,7 +61,7 @@ public class PlayerStatus : MonoBehaviour
         {
             GameObject instanceB = Instantiate(Bullet,this.transform.position,Quaternion.identity);
             Firing script = instanceB.GetComponent<Firing>();
-            script.SetTag(true);
+            script.SetTag(true,null);
         }
         #endregion
     }
