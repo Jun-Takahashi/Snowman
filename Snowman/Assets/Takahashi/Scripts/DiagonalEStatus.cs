@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStatus : MonoBehaviour
+public class DiagonalEStatus : MonoBehaviour
 {
     private List<Vector3> moveP;
     public int Speed;
@@ -29,21 +29,28 @@ public class EnemyStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position,target) <0.001)
+        if (Vector3.Distance(transform.position, target) < 0.001)
         {
             targetC++;
             target = moveP[targetC];
         }
-        
-        transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime* Speed);
+
+        transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
 
         #region 射撃管理
         span += Time.deltaTime;
         if (span >= 1)
         {
+            //右下へ撃つ
             GameObject instanceB = Instantiate(Bullet, this.transform.position, Quaternion.identity);
             Firing script = instanceB.GetComponent<Firing>();
-            script.SetTag(false,"Enemy");
+            script.SetTag(false,"DiagonalR");
+
+            //左下へ撃つ
+            instanceB = Instantiate(Bullet, this.transform.position, Quaternion.identity);
+            script = instanceB.GetComponent<Firing>();
+            script.SetTag(false, "DiagonalL");
+
             span = 0;
         }
         #endregion
@@ -59,7 +66,7 @@ public class EnemyStatus : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag == "BulletP")
+        if (collision.gameObject.tag == "BulletP")
         {
             Destroy(collision.gameObject);
             Hp--;
