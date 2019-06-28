@@ -57,6 +57,7 @@ public class EnemyFac : MonoBehaviour
         if(BossWave == selectPattern.Count)
         {
             Instantiate(Boss, new Vector3(0, 0, 10), Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
