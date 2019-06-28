@@ -5,12 +5,19 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
+    public enum BossState
+    {
+        Normal,
+        Pinch
+    };
+    public BossState bossState;
+
     [SerializeField, Header("ボスの体力")]
     public float BossHp;
     [SerializeField]
-    private BossMove bossMove;
+    private BossMove bossMove = null;
     [SerializeField]
-    private SparkLiner sparkLiner;
+    private SparkLiner sparkLiner = null;
 
     public bool sparkFlag = false;
 
@@ -20,8 +27,10 @@ public class BossManager : MonoBehaviour
     void Start()
     {
         BossHp = 10;
-        bossMove = GetComponent<BossMove>();
-        sparkLiner = GetComponent<SparkLiner>();
+
+        bossState = BossState.Normal;
+        //bossMove = GetComponent<BossMove>();
+        //sparkLiner = GetComponent<SparkLiner>();
     }
 
     // Update is called once per frame
@@ -32,12 +41,16 @@ public class BossManager : MonoBehaviour
         {
             BossDamage(1);
         }
+
+
+        
         if (BossHp < 5 && !flag)
         {
             bossMove.Crisis(bossMove.interval / 3, bossMove.speed * 3);
             SparkLineFlag();
             sparkLiner.NewCoilFlag = true;
             flag = true;
+            bossState = BossState.Pinch;
         }
         if (BossHp <= 0)
         {
@@ -55,5 +68,14 @@ public class BossManager : MonoBehaviour
     public bool SparkLineFlag()
     {
         return sparkFlag = true;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "bulletP")
+        {
+            BossDamage(1);
+        }
+        
     }
 }

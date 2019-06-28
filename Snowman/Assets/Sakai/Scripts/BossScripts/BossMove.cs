@@ -42,6 +42,8 @@ public class BossMove : MonoBehaviour
     //目的地を通過したら記録
     private int count;
 
+    private BossManager bossManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,7 @@ public class BossMove : MonoBehaviour
         bossRb = GetComponent<Rigidbody>();
         arrived = true;
         BossMoveState = MoveState.Stop;
+        bossManager = GetComponent<BossManager>();
     }
 
     // Update is called once per frame
@@ -67,7 +70,10 @@ public class BossMove : MonoBehaviour
                 tmpTime += Time.deltaTime; //経過時間計測
                 if (tmpTime >= interval) //経過時間が待ち時間を超えたか
                 {
-                    NextPoint(count);
+                    if (bossManager.bossState == BossManager.BossState.Normal)
+                        NextPoint(count);
+                    else if (bossManager.bossState == BossManager.BossState.Pinch)
+                        RandomNextPoint();
                     BossMoveState = MoveState.Move;
                     arrived = false;
                     tmpTime = 0;
@@ -120,6 +126,11 @@ public class BossMove : MonoBehaviour
     {
         interval = PInterval;
         speed = PSpeed;
+    }
+
+    void RandomNextPoint()
+    {
+        destination = MovePoints[Random.Range(0, maxNum)].transform.position;
     }
 
 }
