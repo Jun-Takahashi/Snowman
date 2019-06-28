@@ -51,7 +51,7 @@ public class PlayerStatus : MonoBehaviour
 
         #region 残機管理
 
-        if (Hp==0)
+        if (Hp<=0)
         {
             Destroy(gameObject);
         }
@@ -91,8 +91,9 @@ public class PlayerStatus : MonoBehaviour
         }
         if(collision.gameObject.tag == "BulletE")
         {
+            Firing script = collision.gameObject.GetComponent<Firing>();
+            Hp -= script.DamageCheck();
             Destroy(collision.gameObject);
-            Hp--;
         }
     }
 }
