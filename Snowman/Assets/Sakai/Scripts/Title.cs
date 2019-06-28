@@ -16,7 +16,7 @@ public class Title : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Sakai");
+            SceneManager.LoadScene("Stage1");
         }
     }
 }

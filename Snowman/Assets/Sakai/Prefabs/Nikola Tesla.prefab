@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossState: 0
-  BossHp: 0
+  BossHp: 10
   bossMove: {fileID: 7125927233886004092}
   sparkLiner: {fileID: 2363256765991853227}
   sparkFlag: 0
