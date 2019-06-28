@@ -72,21 +72,6 @@
      <Compile Include="Assets\Takahashi\Scripts\Firing.cs" />
      <Compile Include="Assets\Takahashi\Scripts\PlayerStatus.cs" />
      <Compile Include="Assets\Takahashi\Scripts\Screen.cs" />
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/sakai Yuu/Desktop/チーム制作（シューティング_6_14）/Snowman/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/sakai Yuu/Desktop/チーム制作（シューティング_6_14）/Snowman/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/sakai Yuu/Desktop/チーム制作（シューティング_6_14）/Snowman/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/sakai Yuu/Desktop/チーム制作（シューティング_6_14）/Snowman/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>C:/Users/sakai Yuu/Desktop/チーム制作（シューティング_6_14）/Snowman/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
