@@ -217,7 +217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &782986251
 Rigidbody:
@@ -276,10 +276,12 @@ MonoBehaviour:
     - {x: -10, y: 0, z: 15}
   selectPattern:
   - pettern: 000000000b00000016000000
+  - pettern: 000000000b00000016000000
   Enemys:
   - {fileID: 3084361066476971090, guid: 5172159f108470c459800e908817e176, type: 3}
   - {fileID: 3084361066476971090, guid: ea37fcdcc3a86904985a7ed4bf658d47, type: 3}
   - {fileID: 3084361066476971090, guid: cab5cd3d9ccd7634dafd0cadc0125d9c, type: 3}
+  Boss: {fileID: 0}
 --- !u!4 &890730239
 Transform:
   m_ObjectHideFlags: 0
@@ -292,7 +294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1537863493
 GameObject:
@@ -453,7 +455,7 @@ Transform:
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1819248553
 GameObject:
@@ -466,6 +468,7 @@ GameObject:
   - component: {fileID: 1819248556}
   - component: {fileID: 1819248555}
   - component: {fileID: 1819248554}
+  - component: {fileID: 1819248557}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -537,6 +540,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1819248557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819248553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff057baf6d1e9ee458ae485e5a78c5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCamera: {fileID: 1819248555}
+  targetObj: {fileID: 782986250}
 --- !u!1001 &1226309757612783214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -587,7 +604,7 @@ PrefabInstance:
     - target: {fileID: 1226309758090919060, guid: 34d93980a862c264ea7af570a5e31384,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1226309758090919060, guid: 34d93980a862c264ea7af570a5e31384,
         type: 3}

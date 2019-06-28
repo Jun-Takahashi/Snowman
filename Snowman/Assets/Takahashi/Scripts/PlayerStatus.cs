@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -49,37 +50,38 @@ public class PlayerStatus : MonoBehaviour
 
         #endregion
 
-        #region 残機管理
-
-        if (Hp<=0)
-        {
-            Destroy(gameObject);
-        }
-
-        #endregion
-
         #region 射撃管理
         Charge += Time.deltaTime;
-        if(chargeP == 4)//チャージ最大溜め
+        if (chargeP == 4)//チャージ最大溜め
         {
 
         }
-        else if(Charge >= 2.0)//チャージ一段階強化
+        else if (Charge >= 2.0)//チャージ一段階強化
         {
             chargeP += 1;
             Charge = 0;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject instanceB = Instantiate(Bullet,this.transform.position,Quaternion.identity);
+            GameObject instanceB = Instantiate(Bullet, this.transform.position, Quaternion.identity);
             Firing script = instanceB.GetComponent<Firing>();
-            script.SetTag(true,null);
+            script.SetTag(true, null);
 
             script.Charge(chargeP);//チャージ弾発射
             chargeP = 1;
             Charge = 0;
         }
+        #endregion
+
+        #region 残機管理
+
+        if (Hp<=0)
+        {
+            SceneManager.LoadScene("GameOver");
+            Destroy(gameObject);
+        }
+
         #endregion
     }
 
