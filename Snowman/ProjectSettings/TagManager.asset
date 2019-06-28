@@ -6,8 +6,8 @@ TagManager:
   tags:
   - CoilPos
   - Enemy
-  - bulletP
   - BulletE
+  - BulletP
   layers:
   - Default
   - TransparentFX
