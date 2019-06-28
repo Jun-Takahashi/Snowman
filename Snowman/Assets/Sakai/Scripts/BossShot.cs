@@ -79,7 +79,7 @@ public class BossShot : MonoBehaviour
     {
         GameObject bulletInstance = Instantiate(bullet, transform.position, transform.rotation);
         Firing script = bulletInstance.GetComponent<Firing>();
-        script.SetTag(false);
+        script.SetTag(false,"Enemy");
         //bulletList.Add(bulletInstance);
     }
 
