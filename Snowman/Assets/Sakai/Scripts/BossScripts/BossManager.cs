@@ -15,6 +15,8 @@ public class BossManager : MonoBehaviour
 
     [SerializeField, Header("ボスの体力")]
     public float BossHp = 10;
+    private float BossHpNum;
+
     [SerializeField]
     private BossMove bossMove = null;
     [SerializeField]
@@ -33,6 +35,7 @@ public class BossManager : MonoBehaviour
         bossState = BossState.Normal;
         //bossMove = GetComponent<BossMove>();
         //sparkLiner = GetComponent<SparkLiner>();
+        BossHpNum = BossHp;
     }
 
     // Update is called once per frame
@@ -45,8 +48,8 @@ public class BossManager : MonoBehaviour
         //}
 
 
-        
-        if (BossHp < 5 && !flag)
+
+        if (BossHp < (BossHpNum / 2) && !flag)
         {
             bossMove.Crisis(bossMove.interval / 3, bossMove.speed * 3);
             SparkLineFlag();
@@ -79,6 +82,6 @@ public class BossManager : MonoBehaviour
         {
             BossDamage(col.gameObject.GetComponent<Firing>().DamageCheck());
         }
-        
+
     }
 }
