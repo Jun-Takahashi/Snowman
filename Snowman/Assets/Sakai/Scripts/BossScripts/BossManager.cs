@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class BossManager : MonoBehaviour
     public BossState bossState;
 
     [SerializeField, Header("ボスの体力")]
-    public float BossHp;
+    public float BossHp = 10;
     [SerializeField]
     private BossMove bossMove = null;
     [SerializeField]
@@ -26,7 +27,8 @@ public class BossManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BossHp = 10;
+        //transform.gameObject.SetActive(false);
+        //BossHp = 10;
 
         bossState = BossState.Normal;
         //bossMove = GetComponent<BossMove>();
@@ -55,6 +57,7 @@ public class BossManager : MonoBehaviour
         if (BossHp <= 0)
         {
             transform.gameObject.SetActive(false);
+            SceneManager.LoadScene("ClearScene");
         }
 
     }
