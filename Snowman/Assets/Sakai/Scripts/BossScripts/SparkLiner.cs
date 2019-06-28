@@ -6,7 +6,8 @@ public class SparkLiner : MonoBehaviour
 {
     public GameObject coilPositions = null;
 
-    public BossManager bossManager;
+    [SerializeField]
+    public BossManager bossManager = null;
 
     [SerializeField, Header("経過時間")]
     private float timeElapsed;
@@ -26,6 +27,9 @@ public class SparkLiner : MonoBehaviour
     [SerializeField, Header("サンダーパワー")]
     public int ThunderPower = 1;
 
+    [SerializeField, Header("パーティクルの大きさ")]
+    public float ParticlePower = 1;
+
     [SerializeField, Header("放電開始までの時間")]
     public float SparkTime = 0.2f;
 
@@ -38,7 +42,7 @@ public class SparkLiner : MonoBehaviour
     void Start()
     {
         coilPositions = null;
-        bossManager = GetComponent<BossManager>();
+        //bossManager = GetComponent<BossManager>();
         NewCoilFlag = false;
     }
 
@@ -58,7 +62,7 @@ public class SparkLiner : MonoBehaviour
                 NewCoil();
                 NewCoilFlag = false;
                 NewTime = 0;
-            Debug.Log(223);
+                //Debug.Log(223);
             }
         }
 
@@ -100,7 +104,7 @@ public class SparkLiner : MonoBehaviour
     /// <param name="ThunderPower">放電の当たり判定の大きさ</param>
     void Sparking(GameObject coil, int ThunderPower)
     {
-        coil.transform.GetChild(0).GetComponent<CoilMove>().Spark(ThunderPower);
+        coil.transform.GetChild(0).GetComponent<CoilMove>().Spark(ThunderPower, ParticlePower);
     }
 
     /// <summary>

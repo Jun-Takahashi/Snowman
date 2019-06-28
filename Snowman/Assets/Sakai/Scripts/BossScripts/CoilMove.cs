@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CoilMove : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject particle = null;
+
     Vector3 distance; //目的地（ローカル）
     float num; //速度（ローカル）
 
@@ -47,9 +50,10 @@ public class CoilMove : MonoBehaviour
     /// 放電させる
     /// </summary>
     /// <param name="size">放電のサイズ</param>
-    public void Spark(int size)
+    public void Spark(int size, float Psize)
     {
         transform.localScale = new Vector3(size, 0.1f, size);
+        particle.transform.localScale = new Vector3(Psize, 0.1f, Psize);
         SparkFlag = false;
     }
 

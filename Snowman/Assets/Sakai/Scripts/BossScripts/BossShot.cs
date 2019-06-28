@@ -17,7 +17,7 @@ public class BossShot : MonoBehaviour
     [SerializeField, Header("次に弾を撃つまでの待機時間")]
     private float reCast = 0.3f;
 
-    [SerializeField, Header("連射速度")]
+    [SerializeField, Header("連射速度（弾の間隔）")]
     private float rapidFire = 0.3f;
 
     [SerializeField, Header("一度に撃つ弾の最大数")]
