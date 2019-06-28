@@ -39,10 +39,10 @@ public class BossManager : MonoBehaviour
     void Update()
     {
         Debug.Log(BossHp);
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            BossDamage(1);
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    BossDamage(1);
+        //}
 
 
         
@@ -77,7 +77,7 @@ public class BossManager : MonoBehaviour
     {
         if (col.gameObject.tag == "bulletP")
         {
-            BossDamage(1);
+            BossDamage(col.gameObject.GetComponent<Firing>().DamageCheck());
         }
         
     }
