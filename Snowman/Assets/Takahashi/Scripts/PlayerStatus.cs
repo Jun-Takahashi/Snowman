@@ -8,7 +8,10 @@ public class PlayerStatus : MonoBehaviour
     public int Hp;
     [SerializeField, Header("プレイヤーの弾")]
     public GameObject Bullet;
-    
+
+    private float Charge;
+    private int chargeP = 1;
+
     // Update is called once per frame
     void Update()
     {
@@ -48,7 +51,7 @@ public class PlayerStatus : MonoBehaviour
 
         #region 残機管理
 
-        if (Hp==0)
+        if (Hp<=0)
         {
             Destroy(gameObject);
         }
@@ -56,12 +59,26 @@ public class PlayerStatus : MonoBehaviour
         #endregion
 
         #region 射撃管理
+        Charge += Time.deltaTime;
+        if(chargeP == 4)//チャージ最大溜め
+        {
+
+        }
+        else if(Charge >= 2.0)//チャージ一段階強化
+        {
+            chargeP += 1;
+            Charge = 0;
+        }
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             GameObject instanceB = Instantiate(Bullet,this.transform.position,Quaternion.identity);
             Firing script = instanceB.GetComponent<Firing>();
             script.SetTag(true,null);
+
+            script.Charge(chargeP);//チャージ弾発射
+            chargeP = 1;
+            Charge = 0;
         }
         #endregion
     }
@@ -74,8 +91,9 @@ public class PlayerStatus : MonoBehaviour
         }
         if(collision.gameObject.tag == "BulletE")
         {
+            Firing script = collision.gameObject.GetComponent<Firing>();
+            Hp -= script.DamageCheck();
             Destroy(collision.gameObject);
-            Hp--;
         }
     }
 }

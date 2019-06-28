@@ -4,55 +4,113 @@ using UnityEngine;
 
 public class EnemyFac : MonoBehaviour
 {
-    [SerializeField,Header("パターン1")]
-    public List<Vector3> pettern1;
-    [SerializeField,Header("パターン2")]
-    public List<Vector3> pettern2;
-    [SerializeField,Header("パターン3")]
-    public List<Vector3> pettern3;
+    [SerializeField,Header("Enemyの移動指定")]
+    public List<ValueListVector3> MoveList;
 
-    [SerializeField, Header("パターンを選ぶ　１～３")]
-    public List<int> selectPettern;
+    [SerializeField, Header("十の位：Enemyの種類、一の位：移動petternの指定")]
+    public List<ValueListInt> selectPattern;
 
     [SerializeField,Header("敵オブジェクト")]
-    public GameObject Enemy;
-    
-    private List<GameObject> enemys;
-    private float time = 0;
-    private int count = 0;
+    public List<GameObject> Enemys;
 
-    // Update is called once per frame
+    private float time = 0;
+    private int nextEnemy = 0;//次に生成されるEnemy
+
+    //waveを進める変数たち
+    private List<int> waveList;
+    private int waveCount = 0;//何wave目か
+    private int enemyCount;//今のwaveにいるEnemyは何体？
+    private int deathCount = 0;//倒されたEnemyの数は？
+    
+    void Start()
+    {
+        waveList = selectPattern[waveCount].List();
+        enemyCount = waveList.Count;
+    }
+
     void Update()
     {
         time += Time.deltaTime; 
 
-        if(time >= 5f)
+        if(time >= 5f && nextEnemy <= enemyCount)
         {
-            Select(count);
+            Select(waveList[nextEnemy]);
             time = 0.0f;
-            count++;
+            nextEnemy++;
+        }
+
+        if(enemyCount == deathCount)
+        {
+            waveCount++;
+            waveList = selectPattern[waveCount].List();
+            enemyCount = waveList.Count;
+            nextEnemy = 0;
         }
     }
 
     void Select(int num)
     {
-        if (selectPettern[num] == 1)
-        {
-            GameObject instanceE = Instantiate(Enemy, pettern1[0], Quaternion.identity);
-            EnemyStatus script = instanceE.GetComponent<EnemyStatus>();
-            script.SetPosition(pettern1);
-        }
-        if (selectPettern[num] == 2)
-        {
-            GameObject instanceE = Instantiate(Enemy, pettern2[0], Quaternion.identity);
-            EnemyStatus script = instanceE.GetComponent<EnemyStatus>();
-            script.SetPosition(pettern2);
-        }
-        if (selectPettern[num] == 3)
-        {
-            GameObject instanceE = Instantiate(Enemy, pettern3[0], Quaternion.identity);
-            EnemyStatus script = instanceE.GetComponent<EnemyStatus>();
-            script.SetPosition(pettern3);
-        }
+        GameObject instanceE = Instantiate(Enemys[num/10], MoveList[num%10].Select(0), Quaternion.identity);
+        EnemyStatus script = instanceE.GetComponent<EnemyStatus>();
+        script.SetPosition(MoveList[num%10].List());
+    }
+
+    public void Count()
+    {
+        deathCount++;
     }
 }
+
+#region 二次元配列作成クラス(Vector3)
+[System.SerializableAttribute]
+public class ValueListVector3
+{
+    public List<Vector3> pettern = new List<Vector3>();
+
+    public ValueListVector3(List<Vector3> list)
+    {
+        pettern = list;
+    }
+
+    /// <summary>
+    /// List自体を呼び出す
+    /// </summary>
+    /// <returns></returns>
+    public List<Vector3> List()
+    {
+        return pettern;
+    }
+
+    /// <summary>
+    /// Listの中身を直接呼び出す
+    /// </summary>
+    /// <param name="num"></param>
+    /// <returns></returns>
+    public Vector3 Select(int num)
+    {
+        return pettern[num];
+    }
+}
+#endregion
+
+#region 二次元配列作成クラス(int)
+[System.SerializableAttribute]
+public class ValueListInt
+{
+    public List<int> pettern = new List<int>();
+
+    public ValueListInt(List<int> list)
+    {
+        pettern = list;
+    }
+
+    /// <summary>
+    /// List自体を呼び出す
+    /// </summary>
+    /// <returns></returns>
+    public List<int> List()
+    {
+        return pettern;
+    }
+}
+#endregion
