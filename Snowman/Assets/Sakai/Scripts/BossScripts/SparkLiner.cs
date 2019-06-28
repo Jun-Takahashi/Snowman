@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SparkLiner : MonoBehaviour
 {
+    [SerializeField]
     public GameObject coilPositions = null;
 
     [SerializeField]
@@ -41,7 +42,7 @@ public class SparkLiner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coilPositions = null;
+        //coilPositions = null;
         //bossManager = GetComponent<BossManager>();
         NewCoilFlag = false;
     }

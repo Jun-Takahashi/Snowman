@@ -61,6 +61,7 @@
      <Compile Include="Assets\Sakai\Scripts\BossScripts\CoilMove.cs" />
      <Compile Include="Assets\Sakai\Scripts\BossScripts\SparkLiner.cs" />
      <Compile Include="Assets\Sakai\Scripts\bulletMove.cs" />
+     <Compile Include="Assets\Sakai\Scripts\Clear.cs" />
      <Compile Include="Assets\Sakai\Scripts\DeathPlayer.cs" />
      <Compile Include="Assets\Sakai\Scripts\Ending.cs" />
      <Compile Include="Assets\Sakai\Scripts\ScrollScript.cs" />
