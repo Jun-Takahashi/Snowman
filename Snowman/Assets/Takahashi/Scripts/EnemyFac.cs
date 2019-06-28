@@ -13,6 +13,9 @@ public class EnemyFac : MonoBehaviour
     [SerializeField,Header("敵オブジェクト")]
     public List<GameObject> Enemys;
 
+    [SerializeField, Header("ボスオブジェクト")]
+    public GameObject Boss;
+
     private float time = 0;
     private int nextEnemy = 0;//次に生成されるEnemy
 
@@ -21,6 +24,7 @@ public class EnemyFac : MonoBehaviour
     private int waveCount = 0;//何wave目か
     private int enemyCount;//今のwaveにいるEnemyは何体？
     private int deathCount = 0;//倒されたEnemyの数は？
+    private int BossWave = 1;//ボスWaveへGO
     
     void Start()
     {
@@ -32,7 +36,7 @@ public class EnemyFac : MonoBehaviour
     {
         time += Time.deltaTime; 
 
-        if(time >= 5f && nextEnemy <= enemyCount)
+        if(time >= 0.5f && nextEnemy < enemyCount)
         {
             Select(waveList[nextEnemy]);
             time = 0.0f;
@@ -45,6 +49,14 @@ public class EnemyFac : MonoBehaviour
             waveList = selectPattern[waveCount].List();
             enemyCount = waveList.Count;
             nextEnemy = 0;
+            deathCount = 0;
+
+            BossWave++;
+        }
+
+        if(BossWave == selectPattern.Count)
+        {
+            Instantiate(Boss, new Vector3(0, 0, 10), Quaternion.identity);
         }
     }
 
