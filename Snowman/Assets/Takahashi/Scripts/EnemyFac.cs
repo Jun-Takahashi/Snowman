@@ -57,14 +57,15 @@ public class EnemyFac : MonoBehaviour
         if(BossWave == selectPattern.Count)
         {
             Instantiate(Boss, new Vector3(0, 0, 10), Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
     void Select(int num)
     {
-        GameObject instanceE = Instantiate(Enemys[num/10], MoveList[num%10].Select(0), Quaternion.identity);
+        GameObject instanceE = Instantiate(Enemys[num/100], MoveList[num%100].Select(0), Quaternion.identity);
         EnemyStatus script = instanceE.GetComponent<EnemyStatus>();
-        script.SetPosition(MoveList[num%10].List());
+        script.SetPosition(MoveList[num%100].List());
     }
 
     public void Count()
