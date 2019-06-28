@@ -80,7 +80,7 @@ public class PlayerStatus : MonoBehaviour
 
         if (Hp<=0)
         {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("EndingScene");
             Destroy(gameObject);
         }
 
