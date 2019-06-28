@@ -75,7 +75,7 @@ public class BossManager : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "bulletP")
+        if (col.gameObject.tag == "BulletP")
         {
             BossDamage(col.gameObject.GetComponent<Firing>().DamageCheck());
         }
