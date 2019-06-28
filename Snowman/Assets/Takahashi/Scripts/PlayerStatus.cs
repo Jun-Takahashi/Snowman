@@ -9,6 +9,8 @@ public class PlayerStatus : MonoBehaviour
     public int Hp;
     [SerializeField, Header("プレイヤーの弾")]
     public GameObject Bullet;
+    [SerializeField, Header("チャージ速度")]
+    public float ChargeSpeed = 2.0f;
 
     private float Charge;
     private int chargeP = 1;
@@ -51,12 +53,12 @@ public class PlayerStatus : MonoBehaviour
         #endregion
 
         #region 射撃管理
-        Charge += Time.deltaTime;
-        if (chargeP == 4)//チャージ最大溜め
+        Charge += Time.deltaTime * 2;
+        if (chargeP == 5)//チャージ最大溜め
         {
 
         }
-        else if (Charge >= 2.0)//チャージ一段階強化
+        else if (Charge >= ChargeSpeed)//チャージ一段階強化
         {
             chargeP += 1;
             Charge = 0;
