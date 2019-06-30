@@ -33,35 +33,55 @@ public class EnemyStatus : MonoBehaviour
     void Update()
     {
         #region 移動処理
-        if (set)
+
+        #region　傑作
+        if (Vector3.Distance(transform.position, target) < 0.001)
         {
-            if(Vector3.Distance(transform.position,distination-new Vector3(1.5f,0,0))<0.001)
-            {
-                target = distination + new Vector3(1.5f, 0, 0);
-            }
-            if (Vector3.Distance(transform.position, distination + new Vector3(1.5f, 0, 0)) < 0.001)
-            {
-                target = distination - new Vector3(1.5f, 0, 0);
-            }
-
-            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
+            targetC++;
+            target = moveP[targetC];
         }
-        else
+
+        transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
+
+        if (Vector3.Distance(transform.position, distination) < 0.001)//終着点にてループ
         {
-            if (Vector3.Distance(transform.position, target) < 0.001)
-            {
-                targetC++;
-                target = moveP[targetC];
-            }
-
-            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
-
-            if (Vector3.Distance(transform.position, distination) < 0.001)//終着点にてループ
-            {
-                target = distination - new Vector3(1.5f, 0, 0);
-                set = true;
-            }
+            targetC--;
+            target = moveP[targetC];
         }
+        #endregion
+
+        #region　駄作
+        //if (set)
+        //{
+        //    if(Vector3.Distance(transform.position,distination-new Vector3(1.5f,0,0))<0.001)
+        //    {
+        //        target = distination + new Vector3(1.5f, 0, 0);
+        //    }
+        //    if (Vector3.Distance(transform.position, distination + new Vector3(1.5f, 0, 0)) < 0.001)
+        //    {
+        //        target = distination - new Vector3(1.5f, 0, 0);
+        //    }
+
+        //    transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
+        //}
+        //else
+        //{
+        //    if (Vector3.Distance(transform.position, target) < 0.001)
+        //    {
+        //        targetC++;
+        //        target = moveP[targetC];
+        //    }
+
+        //    transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
+
+        //    if (Vector3.Distance(transform.position, distination) < 0.001)//終着点にてループ
+        //    {
+        //        target = distination - new Vector3(1.5f, 0, 0);
+        //        set = true;
+        //    }
+        //}
+        #endregion
+
         #endregion
 
         #region 射撃管理
