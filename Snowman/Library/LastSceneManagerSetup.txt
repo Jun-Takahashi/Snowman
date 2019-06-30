@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Sakai/Scenes/TitleScene.unity
+- path: Assets/Sakai/Scenes/Sakai.unity
   isLoaded: 1
   isActive: 1
