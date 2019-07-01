@@ -9,6 +9,10 @@ public class PlayerStatus : MonoBehaviour
     public int Hp;
     [SerializeField, Header("プレイヤーの弾")]
     public GameObject Bullet;
+    [SerializeField, Header("プレイヤーの移動速度")]
+    public float Speed = 1;
+    [SerializeField, Header("最大チャージ")]
+    public int MaxCharge = 5;
     [SerializeField, Header("チャージ速度")]
     public float ChargeSpeed = 2.0f;
 
@@ -20,8 +24,8 @@ public class PlayerStatus : MonoBehaviour
     {
         #region 移動処理
 
-        float x = Input.GetAxis("Horizontal") / 2;
-        float z = Input.GetAxis("Vertical") / 2;
+        float x = Input.GetAxis("Horizontal") / 2 * Speed;
+        float z = Input.GetAxis("Vertical") / 2 * Speed;
 
         transform.position += new Vector3(x, 0, z);
 
@@ -54,7 +58,7 @@ public class PlayerStatus : MonoBehaviour
 
         #region 射撃管理
         Charge += Time.deltaTime * 2;
-        if (chargeP == 5)//チャージ最大溜め
+        if (chargeP == MaxCharge)//チャージ最大溜め
         {
 
         }
