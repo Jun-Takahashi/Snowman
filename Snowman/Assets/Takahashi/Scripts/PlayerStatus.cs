@@ -7,15 +7,18 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField,Header("プレイヤーの残機")]
     public int Hp;
-    [SerializeField, Header("プレイヤーの弾")]
-    public GameObject Bullet;
     [SerializeField, Header("プレイヤーの移動速度")]
     public float Speed = 1;
+    [SerializeField, Header("プレイヤーの弾")]
+    public GameObject Bullet;
     [SerializeField, Header("最大チャージ")]
     public int MaxCharge = 5;
     [SerializeField, Header("チャージ速度")]
     public float ChargeSpeed = 2.0f;
+    [SerializeField, Header("プレイヤーの連射速度")]
+    public float FireSpeed = 1;
 
+    private float span = 0;
     private float Charge;
     private int chargeP = 1;
 
@@ -57,6 +60,7 @@ public class PlayerStatus : MonoBehaviour
         #endregion
 
         #region 射撃管理
+        span += Time.deltaTime * 2;
         Charge += Time.deltaTime * 2;
         if (chargeP == MaxCharge)//チャージ最大溜め
         {
@@ -70,13 +74,17 @@ public class PlayerStatus : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject instanceB = Instantiate(Bullet, this.transform.position, Quaternion.identity);
-            Firing script = instanceB.GetComponent<Firing>();
-            script.SetTag(true, null);
+            if (span >= FireSpeed)
+            {
+                GameObject instanceB = Instantiate(Bullet, this.transform.position, Quaternion.identity);
+                Firing script = instanceB.GetComponent<Firing>();
+                script.SetTag(true, null);
 
-            script.Charge(chargeP);//チャージ弾発射
-            chargeP = 1;
-            Charge = 0;
+                script.Charge(chargeP);//チャージ弾発射
+                chargeP = 1;
+                Charge = 0;
+                span = 0;
+            }
         }
         #endregion
 
