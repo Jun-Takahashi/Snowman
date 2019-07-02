@@ -147,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 10
   Bullet: {fileID: 7848613867076063587, guid: 287976807ab6a0e469170ca9cd314c48, type: 3}
+  Speed: 1
+  MaxCharge: 5
   ChargeSpeed: 2
 --- !u!65 &782986247
 BoxCollider:

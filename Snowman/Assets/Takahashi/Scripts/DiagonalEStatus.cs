@@ -64,7 +64,7 @@ public class DiagonalEStatus : MonoBehaviour
         #endregion
 
         #region 射撃管理
-        span += Time.deltaTime;
+        span += Time.deltaTime * 2;
         if (span >= 1)
         {
             //右下へ撃つ

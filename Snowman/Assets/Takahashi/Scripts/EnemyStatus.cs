@@ -10,6 +10,8 @@ public class EnemyStatus : MonoBehaviour
     public int Hp;
     [SerializeField, Header("エネミーの弾")]
     public GameObject Bullet;
+    [SerializeField, Header("エネミーの連射速度")]
+    public float FireSpeed = 1;
     public int Power = 1;
 
     private Vector3 target;//次に移動する位置
@@ -85,8 +87,8 @@ public class EnemyStatus : MonoBehaviour
         #endregion
 
         #region 射撃管理
-        span += Time.deltaTime;
-        if (span >= 1)
+        span += Time.deltaTime * 2;
+        if (span >= FireSpeed)
         {
             GameObject instanceB = Instantiate(Bullet, this.transform.position, Quaternion.identity);
             Firing script = instanceB.GetComponent<Firing>();
