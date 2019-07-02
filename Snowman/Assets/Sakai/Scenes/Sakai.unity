@@ -1154,6 +1154,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1846184168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5439354351147350046, guid: 69f71d983dd017d47bbebc67824a850c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5439354350768328101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1846184171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846184168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1f625fee12563498dc5b20e02c89cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpFlag: 0
 --- !u!1001 &386631829150541220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1518,6 +1537,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossHp
       objectReference: {fileID: 0}
+    - target: {fileID: 5439354351147350046, guid: 69f71d983dd017d47bbebc67824a850c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5439354351147350041, guid: 69f71d983dd017d47bbebc67824a850c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1640,7 +1664,7 @@ PrefabInstance:
     - target: {fileID: 8313905205386658042, guid: c3a81e0fe2df1af4a9fae8a2b30c2033,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 405841480340933958, guid: c3a81e0fe2df1af4a9fae8a2b30c2033,
         type: 3}
@@ -1743,6 +1767,11 @@ PrefabInstance:
       propertyPath: BossHp
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2274505802291353779, guid: c3a81e0fe2df1af4a9fae8a2b30c2033,
+        type: 3}
+      propertyPath: HpUI
+      value: 
+      objectReference: {fileID: 781809084}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a81e0fe2df1af4a9fae8a2b30c2033, type: 3}
 --- !u!1001 &6502990604788378016
