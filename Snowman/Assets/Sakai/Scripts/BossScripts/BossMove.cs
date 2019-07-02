@@ -14,6 +14,8 @@ public class BossMove : MonoBehaviour
     }
     private MoveState BossMoveState; //ボスの移動状況
 
+
+
     [SerializeField, Header("ボスの移動地点")]
     public GameObject BossMovePoint;
     [SerializeField, Header("移動する目的地のリスト")]
@@ -28,12 +30,13 @@ public class BossMove : MonoBehaviour
 
     private Rigidbody bossRb; //ボスのRigidbody
 
-    [SerializeField, Header("目的地に着いているかどうか")]
-    public bool arrived;
+    //目的地に着いているかどうか
+    private bool arrived;
 
     [SerializeField, Header("移動までの待機時間")]
     public float interval = 6f;
-    [SerializeField, Header("経過時間")]
+
+    //経過時間
     private float tmpTime = 0;
 
     //目的地の数
