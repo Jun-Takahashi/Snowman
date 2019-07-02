@@ -1063,7 +1063,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Boss
       value: 
-      objectReference: {fileID: 1435333335888417527, guid: 11e9e3f262a26ed428f0d3fa8384c571,
+      objectReference: {fileID: 5754941213425042038, guid: 1dac03616efbd9441b86bce61e2c7119,
         type: 3}
     - target: {fileID: 424884766691823881, guid: ae84dd2ff9dfebb488050b3bc79decdb,
         type: 3}
@@ -1657,12 +1657,17 @@ PrefabInstance:
     - target: {fileID: 8867233176259923436, guid: 18b721e8e8df953458f2376ef8785058,
         type: 3}
       propertyPath: FireSpeed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8867233176259923436, guid: 18b721e8e8df953458f2376ef8785058,
         type: 3}
       propertyPath: Speed
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867233176259923436, guid: 18b721e8e8df953458f2376ef8785058,
+        type: 3}
+      propertyPath: ChargeSpeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18b721e8e8df953458f2376ef8785058, type: 3}
@@ -2116,6 +2121,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69f71d983dd017d47bbebc67824a850c, type: 3}
+--- !u!1 &2073827232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5439354351147350046, guid: 69f71d983dd017d47bbebc67824a850c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1845677937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2073827235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073827232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1f625fee12563498dc5b20e02c89cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpFlag: 0
 --- !u!1 &2125674252
 GameObject:
   m_ObjectHideFlags: 0

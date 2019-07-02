@@ -124,8 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  Hp: 3
+  Hp: 2
   Bullet: {fileID: 7848613867076063587, guid: 287976807ab6a0e469170ca9cd314c48, type: 3}
+  FireSpeed: 2
   Power: 2
 --- !u!1001 &2471220706239766188
 PrefabInstance:
