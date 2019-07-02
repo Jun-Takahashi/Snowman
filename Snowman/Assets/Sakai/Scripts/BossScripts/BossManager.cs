@@ -27,11 +27,9 @@ public class BossManager : MonoBehaviour
 
     bool flag = false;
 
-    [SerializeField, Header("HPのUI")]
-    public RectTransform HpUI = null;
-    public float UIx, UIy, UIz;
-
-
+    [SerializeField]
+    public Canvas canvas;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +40,8 @@ public class BossManager : MonoBehaviour
         //bossMove = GetComponent<BossMove>();
         //sparkLiner = GetComponent<SparkLiner>();
         BossHpNum = BossHp;
-        //HpUI = GameObject.Find("BossHp").GetComponent<RectTransform>();
-        HpUI.GetComponent<StartFalse>().HpFlagChange();
+
+        
     }
 
     // Update is called once per frame
@@ -55,7 +53,7 @@ public class BossManager : MonoBehaviour
             BossDamage(1);
         }
 
-
+        GetComponent<HpBar>().hpBar.gameObject.SetActive(true);
 
         if (BossHp < (BossHpNum / 2) && !flag)
         {
@@ -69,7 +67,7 @@ public class BossManager : MonoBehaviour
         {
             transform.gameObject.SetActive(false);
             SceneManager.LoadScene("ClearScene");
-            //HpUI.transform.gameObject.SetActive(false);
+
         }
 
     }
@@ -78,7 +76,7 @@ public class BossManager : MonoBehaviour
     {
         BossHp -= damage;
 
-        HpUI.sizeDelta = new Vector2(BossHp * 10, HpUI.sizeDelta.y);
+        
         return BossHp;
     }
 

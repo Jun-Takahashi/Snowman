@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 3461310322300050264}
   - component: {fileID: 2363256765991853227}
   - component: {fileID: 707605865021418800}
+  - component: {fileID: 2096001202}
   m_Layer: 0
   m_Name: Nikola Tesla
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +112,7 @@ MonoBehaviour:
   BossMovePoint: {fileID: 0}
   MovePoints: []
   speed: 3
-  arrived: 0
   interval: 3
-  tmpTime: 0
 --- !u!114 &2274505802291353779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,10 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coilPositions: {fileID: 0}
-  bossManager: {fileID: 0}
+  bossManager: {fileID: 2274505802291353779}
   timeElapsed: 0
   timeElapsed2: 0
-  coil: {fileID: 2594778505092433803, guid: bdb841fa7c263424a91dea5a5cb505a9, type: 3}
+  coil: {fileID: 100000, guid: c46a529abd2dcd244b8ce9c22615cddf, type: 3}
   coilSpeed: 0.2
   ThunderPower: 7
   ParticlePower: 1
@@ -187,3 +186,17 @@ MonoBehaviour:
   rapidFire: 0.3
   bulletNum: 6
   shotFlag: 0
+--- !u!114 &2096001202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313905205386658042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046517c8e573ebc4d9a9b619544f2763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBar: {fileID: 2574640376833990083, guid: e1cc62bca69054a469ae0df27e0cea9c, type: 3}
+  bossManager: {fileID: 2274505802291353779}

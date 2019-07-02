@@ -5,6 +5,7 @@ using UnityEngine;
 public class StartFalse : MonoBehaviour
 {
     public bool hpFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +16,16 @@ public class StartFalse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //HpFlagChange();
+        if (hpFlag)
+        {
+            transform.gameObject.SetActive(true);
+        }
 
     }
 
-    public void HpFlagChange()
+    public bool HpFlagChange()
     {
-        transform.gameObject.SetActive(true);
         hpFlag = true;
+        return hpFlag;
     }
 }
