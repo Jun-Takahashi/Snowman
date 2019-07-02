@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField,Header("プレイヤーの残機")]
-    public int MaxHp;
+    public int Hp;
     [SerializeField, Header("プレイヤーの移動速度")]
     public float Speed = 1;
     [SerializeField, Header("プレイヤーの弾")]
