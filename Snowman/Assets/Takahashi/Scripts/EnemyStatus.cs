@@ -114,6 +114,7 @@ public class EnemyStatus : MonoBehaviour
         {
             Firing script = collision.gameObject.GetComponent<Firing>();
             Hp -= script.DamageCheck();
+            script.Damage(Hp);
             //Destroy(collision.gameObject);//当たった弾は消える
         }
     }
