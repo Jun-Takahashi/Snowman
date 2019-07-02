@@ -81,6 +81,7 @@ public class BossManager : MonoBehaviour
         if (col.gameObject.tag == "BulletP")
         {
             BossDamage(col.gameObject.GetComponent<Firing>().DamageCheck());
+            Destroy(col.gameObject);
         }
 
     }
