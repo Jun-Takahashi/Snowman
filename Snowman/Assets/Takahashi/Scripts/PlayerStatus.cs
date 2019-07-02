@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField,Header("プレイヤーの残機")]
-    public int Hp;
+    public int MaxHp;
     [SerializeField, Header("プレイヤーの移動速度")]
     public float Speed = 1;
     [SerializeField, Header("プレイヤーの弾")]
@@ -18,9 +18,16 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField, Header("プレイヤーの連射速度")]
     public float FireSpeed = 1;
 
-    private float span = 0;
+    private float span;
     private float Charge;
-    private int chargeP = 1;
+    private int chargeP;
+
+    void Start()
+    {
+        span = FireSpeed;
+        Charge = 0;
+        chargeP = 1;
+    }
 
     // Update is called once per frame
     void Update()

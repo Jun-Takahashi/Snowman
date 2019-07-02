@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class BossManager : MonoBehaviour
 
     bool flag = false;
 
+    [SerializeField, Header("HPのUI")]
+    public RectTransform HpUI = null;
+    public float UIx, UIy, UIz;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,16 +42,17 @@ public class BossManager : MonoBehaviour
         //bossMove = GetComponent<BossMove>();
         //sparkLiner = GetComponent<SparkLiner>();
         BossHpNum = BossHp;
+        HpUI = GameObject.Find("BossHp").GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.Log(BossHp);
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    BossDamage(1);
-        //}
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            BossDamage(1);
+        }
 
 
 
@@ -68,6 +75,8 @@ public class BossManager : MonoBehaviour
     public float BossDamage(int damage)
     {
         BossHp -= damage;
+
+        HpUI.sizeDelta = new Vector2(BossHp * 10, HpUI.sizeDelta.y);
         return BossHp;
     }
 
@@ -81,6 +90,7 @@ public class BossManager : MonoBehaviour
         if (col.gameObject.tag == "BulletP")
         {
             BossDamage(col.gameObject.GetComponent<Firing>().DamageCheck());
+            Destroy(col.gameObject);
         }
 
     }
