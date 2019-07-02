@@ -22,22 +22,95 @@ public class PlayerStatus : MonoBehaviour
     private float Charge;
     private int chargeP;
 
+    private float x, z;
+
     void Start()
     {
         span = FireSpeed;
         Charge = 0;
         chargeP = 1;
+        x = 0; z = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         #region 移動処理
+        #region　慣性のある移動、だが斜め移動が加速
+        //float x = Input.GetAxis("Horizontal") / 2 * Speed;
+        //float z = Input.GetAxis("Vertical") / 2 * Speed;
 
-        float x = Input.GetAxis("Horizontal") / 2 * Speed;
-        float z = Input.GetAxis("Vertical") / 2 * Speed;
+        //transform.position += new Vector3(x, 0, z);
+        #endregion
 
-        transform.position += new Vector3(x, 0, z);
+        bool moveX = false, moveZ = false;
+
+        #region 加速
+        if(Input.GetKey(KeyCode.W))
+        {
+            if (z < 0) z += Time.deltaTime;
+            if (z < 0.5f) z += Time.deltaTime;
+            moveZ = true;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (z > 0) z -= Time.deltaTime;
+            if (z > -0.5f) z -= Time.deltaTime;
+            moveZ = true;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            if (x < 0) x += Time.deltaTime;
+            if (x < 0.5f) x += Time.deltaTime;
+            moveX = true;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            if (x > 0) x -= Time.deltaTime;
+            if (x > -0.5f) x -= Time.deltaTime;
+            moveX = true;
+        }
+        #endregion
+
+        #region　減速
+        if(!moveX)
+        {
+            if (x > 0)
+            {
+                x -= Time.deltaTime * 2;
+                if (x < 0) x = 0;
+            }
+            else if (x < 0) 
+            {
+                x += Time.deltaTime * 2;
+                if (x > 0) x = 0;
+            }
+        }
+        if (!moveZ) 
+        {
+            if (z > 0)
+            {
+                z -= Time.deltaTime * 2;
+                if (z < 0) z = 0;
+            }
+            else if (z < 0) 
+            {
+                z += Time.deltaTime * 2;
+                if (z > 0) z = 0;
+            }
+        }
+        #endregion
+
+        Vector3 move = new Vector3(x, 0, z);
+
+        #region　正規化
+        if (!(z == 0) && !(x == 0))//斜め移動の時正規化する
+        {
+            move = move / 1.18f;//ただのごり押し、雑魚
+        }
+        #endregion
+
+        transform.position += move * Speed;
 
         #region　画面内におさめる
         float posX = transform.position.x;
@@ -47,18 +120,22 @@ public class PlayerStatus : MonoBehaviour
         if (transform.position.z >= Screen.HeightU)
         {
             posZ = Screen.HeightU;
+            z = 0;
         }
         if (transform.position.z <= Screen.HeightB)
         {
             posZ = Screen.HeightB;
+            z = 0;
         }
         if (transform.position.x <= Screen.WidthL)
         {
             posX = Screen.WidthL;
+            x = 0;
         }
         if (transform.position.x >= Screen.WidthR)
         {
             posX = Screen.WidthR;
+            x = 0;
         }
 
         transform.position = new Vector3(posX, posY, posZ);
