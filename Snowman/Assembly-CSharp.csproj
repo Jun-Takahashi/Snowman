@@ -68,6 +68,7 @@
      <Compile Include="Assets\Sakai\Scripts\ScrollScript.cs" />
      <Compile Include="Assets\Sakai\Scripts\Title.cs" />
      <Compile Include="Assets\Scripts\CharacterAttribute.cs" />
+     <Compile Include="Assets\StartFalse.cs" />
      <Compile Include="Assets\Takahashi\Scripts\DiagonalEStatus.cs" />
      <Compile Include="Assets\Takahashi\Scripts\EnemyFac.cs" />
      <Compile Include="Assets\Takahashi\Scripts\EnemyStatus.cs" />
