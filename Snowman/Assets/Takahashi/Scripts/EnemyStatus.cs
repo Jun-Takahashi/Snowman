@@ -113,8 +113,8 @@ public class EnemyStatus : MonoBehaviour
         if(collision.gameObject.tag == "BulletP")
         {
             Firing script = collision.gameObject.GetComponent<Firing>();
-            Hp -= script.DamageCheck();
             script.Damage(Hp);
+            Hp -= script.DamageCheck();
             //Destroy(collision.gameObject);//当たった弾は消える
         }
     }
