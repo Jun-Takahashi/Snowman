@@ -21,6 +21,9 @@ public class PlayerStatus : MonoBehaviour
     private float span;
     private float Charge;
     private int chargeP;
+    private Firing script;
+
+    private int childCheck;//子オブジェクトが初期でいくつあるか
 
     private float x, z;
 
@@ -30,6 +33,7 @@ public class PlayerStatus : MonoBehaviour
         Charge = 0;
         chargeP = 1;
         x = 0; z = 0;
+        childCheck = transform.childCount;
     }
 
     // Update is called once per frame
@@ -46,7 +50,7 @@ public class PlayerStatus : MonoBehaviour
         bool moveX = false, moveZ = false;
 
         #region 加速
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             if (z < 0) z += Time.deltaTime;
             if (z < 0.5f) z += Time.deltaTime;
@@ -73,27 +77,27 @@ public class PlayerStatus : MonoBehaviour
         #endregion
 
         #region　減速
-        if(!moveX)
+        if (!moveX)
         {
             if (x > 0)
             {
                 x -= Time.deltaTime * 2;
                 if (x < 0) x = 0;
             }
-            else if (x < 0) 
+            else if (x < 0)
             {
                 x += Time.deltaTime * 2;
                 if (x > 0) x = 0;
             }
         }
-        if (!moveZ) 
+        if (!moveZ)
         {
             if (z > 0)
             {
                 z -= Time.deltaTime * 2;
                 if (z < 0) z = 0;
             }
-            else if (z < 0) 
+            else if (z < 0)
             {
                 z += Time.deltaTime * 2;
                 if (z > 0) z = 0;
@@ -144,6 +148,15 @@ public class PlayerStatus : MonoBehaviour
         #endregion
 
         #region 射撃管理
+        if (transform.childCount == childCheck)
+        {
+            GameObject instanceB = Instantiate(Bullet, this.transform.position + new Vector3(0, 0, 0.5f), Quaternion.identity);
+            instanceB.transform.parent = transform;
+            GameObject child = transform.GetChild(childCheck).gameObject;
+            script = child.GetComponent<Firing>();
+            Debug.Log(childCheck);
+        }
+
         span += Time.deltaTime * 2;
         Charge += Time.deltaTime * 2;
         if (chargeP == MaxCharge)//チャージ最大溜め
@@ -154,17 +167,16 @@ public class PlayerStatus : MonoBehaviour
         {
             chargeP += 1;
             Charge = 0;
+            
+            script.Charge(chargeP);//チャージ
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (span >= FireSpeed)
             {
-                GameObject instanceB = Instantiate(Bullet, this.transform.position, Quaternion.identity);
-                Firing script = instanceB.GetComponent<Firing>();
                 script.SetTag(true, null);
 
-                script.Charge(chargeP);//チャージ弾発射
                 chargeP = 1;
                 Charge = 0;
                 span = 0;
