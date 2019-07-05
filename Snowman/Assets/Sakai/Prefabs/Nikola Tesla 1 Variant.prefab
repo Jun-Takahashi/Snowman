@@ -125,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883540490747001960}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 38.3}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5278794141053424912}
@@ -208,15 +208,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7810144647096782877}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5278794141053424912}
   - {fileID: 2125674256}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4093367417179029318
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -289,11 +289,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossMovePoint: {fileID: 3490972892379116850, guid: eb6fa013836ed614e871346d1a3160f1,
     type: 3}
+  PinchMovePoint: {fileID: 1954689660, guid: 6ede46ee67c1e844da28de6c2ca06a22, type: 3}
   MovePoints: []
+  PMovePoints: []
   speed: 3
-  pinchSpeed: 4.5
-  interval: 15
-  pinchInterval: 3
+  pinchSpeed: 5
+  interval: 5
+  pinchInterval: 1
 --- !u!114 &6078581641005498339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,11 +309,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossState: 0
-  BossHp: 50
+  BossHp: 10
   BossHpPinch: 5
   bossMove: {fileID: 8592327664841744732}
   sparkLiner: {fileID: 8723873242638199896}
   sparkFlag: 0
+  pinchFlag: 0
   canvas: {fileID: 0}
 --- !u!54 &9029023606908889685
 Rigidbody:
@@ -341,11 +344,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bb4f80b4363764d8a67e8f4c4255ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coilPositions: {fileID: 0}
+  coilPositions: {fileID: 7216207930811830561, guid: f541d1d63768a4141bdd10cba23f6093,
+    type: 3}
   bossManager: {fileID: 6078581641005498339}
   timeElapsed: 0
   timeElapsed2: 0
-  coil: {fileID: 2594778505092433803, guid: bdb841fa7c263424a91dea5a5cb505a9, type: 3}
+  coil: {fileID: 100000, guid: c46a529abd2dcd244b8ce9c22615cddf, type: 3}
   coilSpeed: 0.2
   ThunderPower: 7
   ParticlePower: 1
@@ -407,14 +411,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8429452763875250827}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -1, z: -4}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0, y: -1, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 3194799025264778214}
   m_Father: {fileID: 2484784857883935012}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &4379442372069787387
 Animator:
   serializedVersion: 3
