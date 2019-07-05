@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7313156101629251210}
   - component: {fileID: 3861060134080044753}
   m_Layer: 0
-  m_Name: Nikola Tesla
+  m_Name: Nikola Tesla 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
