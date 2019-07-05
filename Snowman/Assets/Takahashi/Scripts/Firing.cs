@@ -55,11 +55,20 @@ public class Firing : MonoBehaviour
     {
         transform.position += (velocity * Speed) * Time.deltaTime;//移動
 
-        if (lieScale < chargeP)
+        if (gameObject.tag == "Untagged" ||//チャージ段階か
+            gameObject.tag =="BulletP")//Playerが発射した弾だったら
         {
-            lieScale += 0.1f;
-            transform.localPosition += new Vector3(0, 0, distanceP) * 0.1f;
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f) * 0.1f;
+            if (lieScale < chargeP)
+            {
+                lieScale += 0.1f;
+                transform.localPosition += new Vector3(0, 0, distanceP) * 0.1f;
+                transform.localScale += new Vector3(0.5f, 0.5f, 0.5f) * 0.1f;
+            }
+            else
+            {
+                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f) * chargeP;
+                //チャージ量に応じて大きさを変える
+            }
         }
         else
         {
