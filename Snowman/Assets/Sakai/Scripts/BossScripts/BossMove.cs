@@ -27,6 +27,7 @@ public class BossMove : MonoBehaviour
 
     [SerializeField, Header("移動速度")]
     public float speed = 3.0f;
+    public float pinchSpeed = 4.5f;
 
     private Rigidbody bossRb; //ボスのRigidbody
 
@@ -35,6 +36,7 @@ public class BossMove : MonoBehaviour
 
     [SerializeField, Header("移動までの待機時間")]
     public float interval = 6f;
+    public float pinchInterval = 3f;
 
     //経過時間
     private float tmpTime = 0;
@@ -76,7 +78,7 @@ public class BossMove : MonoBehaviour
                     if (bossManager.bossState == BossManager.BossState.Normal)
                         NextPoint(count);
                     else if (bossManager.bossState == BossManager.BossState.Pinch)
-                        RandomNextPoint();
+                        RandomNextPoint(); //ランダムはダメなので修正する 2019/07/03
                     BossMoveState = MoveState.Move;
                     arrived = false;
                     tmpTime = 0;

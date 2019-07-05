@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ooishi\script\destry.cs" />
+     <Compile Include="Assets\ooishi\script\PlayerAnimManager.cs" />
+     <Compile Include="Assets\ooishi\script\Rotat.cs" />
      <Compile Include="Assets\Sakai\Scripts\BossScripts\BossManager.cs" />
      <Compile Include="Assets\Sakai\Scripts\BossScripts\BossMove.cs" />
      <Compile Include="Assets\Sakai\Scripts\BossScripts\BossShot.cs" />

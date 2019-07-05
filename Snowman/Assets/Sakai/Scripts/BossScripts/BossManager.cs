@@ -18,6 +18,9 @@ public class BossManager : MonoBehaviour
     public float BossHp = 10;
     private float BossHpNum;
 
+    [SerializeField, Header("ボスの動きが変わるHP（ピンチ）")]
+    private float BossHpPinch = 5;
+
     [SerializeField]
     private BossMove bossMove = null;
     [SerializeField]
@@ -55,9 +58,9 @@ public class BossManager : MonoBehaviour
 
         GetComponent<HpBar>().hpBar.gameObject.SetActive(true);
 
-        if (BossHp < (BossHpNum / 2) && !flag)
+        if (BossHp < BossHpPinch && !flag)
         {
-            bossMove.Crisis(bossMove.interval / 3, bossMove.speed * 3);
+            bossMove.Crisis(bossMove.pinchInterval, bossMove.pinchSpeed);
             SparkLineFlag();
             sparkLiner.NewCoilFlag = true;
             flag = true;
@@ -75,8 +78,6 @@ public class BossManager : MonoBehaviour
     public float BossDamage(int damage)
     {
         BossHp -= damage;
-
-        
         return BossHp;
     }
 
