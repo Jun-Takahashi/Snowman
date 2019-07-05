@@ -6,11 +6,15 @@ public class Firing : MonoBehaviour
 {
     [SerializeField, Header("移動速度")]
     public int Speed;
+    [SerializeField, Header("Playerとの距離感")]
+    public float distanceP = 0.5f;
 
     private bool Player;
     private string Enemys;
     private Vector3 velocity;
     private int chargeP;
+
+    private float lieScale;
     
     /// <summary>
     /// タグ設定
@@ -23,6 +27,7 @@ public class Firing : MonoBehaviour
         {
             gameObject.tag = "BulletP";
             velocity = new Vector3(0, 0, 1);
+            transform.parent = null;
         }
         if(!Player)
         {
@@ -50,8 +55,17 @@ public class Firing : MonoBehaviour
     {
         transform.position += (velocity * Speed) * Time.deltaTime;//移動
 
-        transform.localScale = new Vector3(chargeP * 0.5f, chargeP * 0.5f, chargeP * 0.5f);
-        //チャージ量に応じて大きさを変える
+        if (lieScale < chargeP)
+        {
+            lieScale += 0.1f;
+            transform.localPosition += new Vector3(0, 0, distanceP) * 0.1f;
+            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f) * 0.1f;
+        }
+        else
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f) * chargeP;
+            //チャージ量に応じて大きさを変える
+        }
 
         #region 画面端判定
         //上画面端ぃ→消す
@@ -65,19 +79,19 @@ public class Firing : MonoBehaviour
             Destroy(gameObject);
         }
         //左右画面端ぃ→反射ぁ
-        if(transform.position.x > Screen.WidthR)
+        if (transform.position.x > Screen.WidthR)
         {
             velocity.x = -velocity.x;
             transform.position = new Vector3(Screen.WidthR, transform.position.y, transform.position.z);
         }
-        if(transform.position.x < Screen.WidthL)
+        if (transform.position.x < Screen.WidthL)
         {
             velocity.x = -velocity.x;
             transform.position = new Vector3(Screen.WidthL, transform.position.y, transform.position.z);
         }
         #endregion
 
-        if(chargeP <= 0)
+        if (chargeP <= 0 && gameObject.tag != null)
         {
             Destroy(gameObject);//大きさが0になったら消えよる
         }
@@ -107,16 +121,28 @@ public class Firing : MonoBehaviour
         #endregion
     }
 
+    /// <summary>
+    /// 弾の威力を設定
+    /// </summary>
+    /// <param name="chargeP">威力</param>
     public void Charge(int chargeP)
     {
         this.chargeP = chargeP;
     }
 
+    /// <summary>
+    /// 威力を確認
+    /// </summary>
+    /// <returns>威力</returns>
     public int DamageCheck()
     {
         return chargeP;//チャージ量を返す
     }
 
+    /// <summary>
+    /// 弾自身の大きさを変化
+    /// </summary>
+    /// <param name="damage">変化量</param>
     public void Damage(int damage)
     {
         chargeP -= damage;//大きさを変える
