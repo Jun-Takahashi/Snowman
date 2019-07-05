@@ -121,16 +121,28 @@ public class Firing : MonoBehaviour
         #endregion
     }
 
+    /// <summary>
+    /// 弾の威力を設定
+    /// </summary>
+    /// <param name="chargeP">威力</param>
     public void Charge(int chargeP)
     {
         this.chargeP = chargeP;
     }
 
+    /// <summary>
+    /// 威力を確認
+    /// </summary>
+    /// <returns>威力</returns>
     public int DamageCheck()
     {
         return chargeP;//チャージ量を返す
     }
 
+    /// <summary>
+    /// 弾自身の大きさを変化
+    /// </summary>
+    /// <param name="damage">変化量</param>
     public void Damage(int damage)
     {
         chargeP -= damage;//大きさを変える
