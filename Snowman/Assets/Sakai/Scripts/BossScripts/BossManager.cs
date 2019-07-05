@@ -28,7 +28,7 @@ public class BossManager : MonoBehaviour
 
     public bool sparkFlag = false;
 
-    bool flag = false;
+    public bool pinchFlag = false;
 
     [SerializeField]
     public Canvas canvas;
@@ -55,15 +55,14 @@ public class BossManager : MonoBehaviour
         {
             BossDamage(1);
         }
-
-        GetComponent<HpBar>().hpBar.gameObject.SetActive(true);
-
-        if (BossHp < BossHpPinch && !flag)
+        
+        if (BossHp < BossHpPinch && !pinchFlag)
         {
             bossMove.Crisis(bossMove.pinchInterval, bossMove.pinchSpeed);
             SparkLineFlag();
             sparkLiner.NewCoilFlag = true;
-            flag = true;
+            bossMove.Pinch();
+            pinchFlag = true;
             bossState = BossState.Pinch;
         }
         if (BossHp <= 0)

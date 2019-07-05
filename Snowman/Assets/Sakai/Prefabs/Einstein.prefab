@@ -109,11 +109,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossMovePoint: {fileID: 0}
+  PinchMovePoint: {fileID: 0}
   MovePoints: []
   speed: 3
-  arrived: 0
+  pinchSpeed: 4.5
   interval: 3
-  tmpTime: 0
+  pinchInterval: 3
 --- !u!114 &6502990604395506262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,9 +129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossState: 0
   BossHp: 0
+  BossHpPinch: 5
   bossMove: {fileID: 6502990604395506263}
   sparkLiner: {fileID: 6502990604395506260}
   sparkFlag: 0
+  canvas: {fileID: 0}
 --- !u!54 &6502990604395506261
 Rigidbody:
   m_ObjectHideFlags: 0
