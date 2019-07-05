@@ -145,7 +145,7 @@ public class PlayerStatus : MonoBehaviour
         #endregion
 
         #region 射撃管理
-        if (transform.IsChildOf(transform))
+        if (transform.childCount == 0)
         {
             GameObject instanceB = Instantiate(Bullet, this.transform.position + new Vector3(0, 0, 0.5f), Quaternion.identity);
             instanceB.transform.parent = transform;
