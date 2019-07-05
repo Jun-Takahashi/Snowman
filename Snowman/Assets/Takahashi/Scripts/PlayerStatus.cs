@@ -23,6 +23,8 @@ public class PlayerStatus : MonoBehaviour
     private int chargeP;
     private Firing script;
 
+    private int childCheck;//子オブジェクトが初期でいくつあるか
+
     private float x, z;
 
     void Start()
@@ -31,6 +33,7 @@ public class PlayerStatus : MonoBehaviour
         Charge = 0;
         chargeP = 1;
         x = 0; z = 0;
+        childCheck = transform.childCount;
     }
 
     // Update is called once per frame
@@ -145,12 +148,13 @@ public class PlayerStatus : MonoBehaviour
         #endregion
 
         #region 射撃管理
-        if (transform.childCount == 0)
+        if (transform.childCount == childCheck)
         {
             GameObject instanceB = Instantiate(Bullet, this.transform.position + new Vector3(0, 0, 0.5f), Quaternion.identity);
             instanceB.transform.parent = transform;
-            GameObject child = transform.GetChild(0).gameObject;
+            GameObject child = transform.GetChild(childCheck).gameObject;
             script = child.GetComponent<Firing>();
+            Debug.Log(childCheck);
         }
 
         span += Time.deltaTime * 2;
