@@ -118,7 +118,8 @@ public class BossMove : MonoBehaviour
     /// <param name="destination">目的地</param>
     void GoToPoint(Vector3 destination)
     {
-        transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, destination,
+            Vector3.Distance(transform.position, destination) / speed * Time.deltaTime);
     }
 
     /// <summary>
