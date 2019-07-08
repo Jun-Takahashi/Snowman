@@ -10,15 +10,18 @@ public class EnemyStatus : MonoBehaviour
     public int Hp;
     [SerializeField, Header("エネミーの弾")]
     public GameObject Bullet;
+    public List<int> BulletPower;
     [SerializeField, Header("エネミーの連射速度")]
     public float FireSpeed = 1;
-    public int Power = 1;
+    public float ReloadTime = 2.5f;
 
     private Vector3 target;//次に移動する位置
     private int targetC;//次の位置を指定するListの場所
     private Vector3 distination;//最終地点
     private float span;//弾発射の間
-    private bool set;//最終地点についたか否か
+    private float wavespan;//弾のパターンを繰り返す間
+    private int nextPower;//次の弾の威力のListの要素番号
+    //private bool set;//最終地点についたか否か
 
     // Start is called before the first frame update
     public void SetPosition(List<Vector3> moveP)
@@ -28,7 +31,9 @@ public class EnemyStatus : MonoBehaviour
         target = moveP[targetC];
         distination = moveP[moveP.Count - 1];
         span = 0;
-        set = false;
+        wavespan = ReloadTime;
+        nextPower = 0;
+        //set = false;
     }
 
     // Update is called once per frame
@@ -39,17 +44,20 @@ public class EnemyStatus : MonoBehaviour
         #region　傑作
         if (Vector3.Distance(transform.position, target) < 0.001)
         {
-            targetC++;
-            target = moveP[targetC];
+            if (Vector3.Distance(transform.position, distination) < 0.001)//終着点にてループ
+            {
+                targetC--;
+                target = moveP[targetC];
+            }
+            else
+            {
+                targetC++;
+                target = moveP[targetC];
+            }
         }
 
-        transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
+        transform.position = Vector3.Lerp(transform.position, target, Vector3.Distance(transform.position, target) / Speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, distination) < 0.001)//終着点にてループ
-        {
-            targetC--;
-            target = moveP[targetC];
-        }
         #endregion
 
         #region　駄作
@@ -88,14 +96,23 @@ public class EnemyStatus : MonoBehaviour
 
         #region 射撃管理
         span += Time.deltaTime * 2;
-        if (span >= FireSpeed)
+        wavespan += Time.deltaTime * 2;
+        if (span >= FireSpeed && wavespan >= ReloadTime)
         {
             GameObject instanceB = Instantiate(Bullet, this.transform.position, Quaternion.identity);
             Firing script = instanceB.GetComponent<Firing>();
             script.SetTag(false,"Enemy");
 
-            script.Charge(Power);//チャージ弾発射
+            script.Charge(BulletPower[nextPower]);//チャージ弾発射
+            nextPower++;
+
             span = 0;
+
+            if (nextPower >= BulletPower.Count)
+            {
+                nextPower = 0;
+                wavespan = 0;
+            }
         }
         #endregion
 

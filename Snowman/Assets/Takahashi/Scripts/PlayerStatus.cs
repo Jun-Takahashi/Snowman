@@ -154,7 +154,6 @@ public class PlayerStatus : MonoBehaviour
             instanceB.transform.parent = transform;
             GameObject child = transform.GetChild(childCheck).gameObject;
             script = child.GetComponent<Firing>();
-            Debug.Log(childCheck);
         }
 
         span += Time.deltaTime * 2;
