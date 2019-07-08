@@ -29,22 +29,12 @@ public class BossManager : MonoBehaviour
     public bool sparkFlag = false;
 
     public bool pinchFlag = false;
-
-    [SerializeField]
-    public Canvas canvas;
     
     // Start is called before the first frame update
     void Start()
     {
-        //transform.gameObject.SetActive(false);
-        //BossHp = 10;
-
         bossState = BossState.Normal;
-        //bossMove = GetComponent<BossMove>();
-        //sparkLiner = GetComponent<SparkLiner>();
         BossHpNum = BossHp;
-
-        
     }
 
     // Update is called once per frame
@@ -92,6 +82,5 @@ public class BossManager : MonoBehaviour
             BossDamage(col.gameObject.GetComponent<Firing>().DamageCheck());
             Destroy(col.gameObject);
         }
-
     }
 }

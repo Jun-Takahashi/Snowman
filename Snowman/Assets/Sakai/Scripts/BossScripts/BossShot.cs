@@ -7,7 +7,8 @@ public class BossShot : MonoBehaviour
     [SerializeField, Header("ボスの弾")]
     private GameObject Bullet = null;
 
-    //private List<GameObject> bulletList;
+    [SerializeField]
+    public BossManager bossManager;
 
     //待機時間（リキャスト）に対する現在の経過時間をカウント
     private float timeCnt;
@@ -29,13 +30,37 @@ public class BossShot : MonoBehaviour
     //現在残っている弾の数
     private int bulletCnt = 0;
 
+    [SerializeField, Header("通常弾のパターン")]
+    public List<int> pattern1;
+    public List<int> pattern2;
+    public List<int> pattern3;
+
+    [SerializeField, Header("ピンチ状態のパターン")]
+    public List<int> patternA;
+    public List<int> patternB;
+
+    public Dictionary<int, List<int>> blletPattern;
+
+    private List<int> Ilist = null;
+
+    private int Pnum;
+
     // Start is called before the first frame update
     void Start()
     {
+        blletPattern = new Dictionary<int, List<int>>
+        {
+            { 1,pattern1 },
+            { 2,pattern2 },
+            { 3,pattern3 },
+            { 4,patternA }, //ここからピンチパターン
+            { 5,patternB }
+        };
         shotFlag = false;
         timeCnt = 0;
         timeCnt2 = 0;
-        bulletCnt = bulletNum;
+        Pnum = 0;
+        Ilist = RandomList();
     }
 
 
@@ -54,21 +79,20 @@ public class BossShot : MonoBehaviour
             timeCnt2 = TimeCounter(timeCnt2);
             if (timeCnt2 >= rapidFire)
             {
-                if (bulletCnt > 0)
+                if (Pnum < Ilist.Count)
                 {
                     shot(Bullet);
-                    bulletCnt--;
+                    Pnum++;
                 }
-                else if (bulletCnt <= 0)
+                else if (Pnum >= Ilist.Count)
                 {
                     shotFlag = false;
-                    bulletCnt = bulletNum;
+                    Pnum = 0;
+                    Ilist = RandomList();
                 }
                 timeCnt2 = 0;
             }
-
         }
-
     }
 
     /// <summary>
@@ -80,16 +104,23 @@ public class BossShot : MonoBehaviour
         GameObject bulletInstance = Instantiate(bullet, transform.position, transform.rotation);
         Firing script = bulletInstance.GetComponent<Firing>();
         script.SetTag(false, "Enemy");
-        //bulletList.Add(bulletInstance);
+
+        script.Charge(Ilist[Pnum]);
     }
 
+    /// <summary>
+    /// リストをランダムに返す
+    /// </summary>
+    /// <returns></returns>
+    List<int> RandomList()
+    {
+        if (bossManager.bossState == BossManager.BossState.Normal)
+        { Ilist = blletPattern[Random.Range(1, 4)]; }
+        else if(bossManager.bossState == BossManager.BossState.Pinch)
+        { Ilist = blletPattern[Random.Range(4, 6)]; }
 
-
-    //void Fire(GameObject obj)
-    //{
-    //    obj.transform.position = obj.transform.position += new Vector3(0, 0, -1);
-    //    shotFlag = false;
-    //}
+        return Ilist;
+    }
 
     /// <summary>
     /// 時間計測用

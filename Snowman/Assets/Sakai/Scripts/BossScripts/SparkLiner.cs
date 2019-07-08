@@ -66,8 +66,7 @@ public class SparkLiner : MonoBehaviour
                 //Debug.Log(223);
             }
         }
-
-        Debug.Log(coilInstance);
+        
         if (coilInstance != null && coilInstance.transform.GetChild(0).GetComponent<CoilMove>().SparkFlag)
         {
             timeElapsed = TimeCount(timeElapsed);
