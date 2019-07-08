@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerHpBar : MonoBehaviour
 {
-    public GameObject Player;
+    public GameObject Respawn;
     [SerializeField,Header("PlayerのHPバー")]
     public Slider slider;
 
-    private PlayerStatus script;
+    private ReSpawn script;
     
     void Start()
     {
-        script = Player.GetComponent<PlayerStatus>();
+        script = Respawn.GetComponent<ReSpawn>();
         slider.maxValue = script.Hp;
     }
     
