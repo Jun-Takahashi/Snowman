@@ -776,16 +776,8 @@ MonoBehaviour:
     type: 3}
   PinchMovePoint: {fileID: 2250880329830462286, guid: a91b3d1fe722c6d4386e5c819bf75b23,
     type: 3}
-  MovePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PMovePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  MovePoints: []
+  PMovePoints: []
   speed: 3
   pinchSpeed: 4.5
   interval: 3
@@ -804,7 +796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossState: 0
   BossHp: 50
-  BossHpPinch: 5
+  BossHpPinch: 25
   bossMove: {fileID: 6016407621501946476}
   sparkLiner: {fileID: 844039074465134082}
   sparkFlag: 0
@@ -840,8 +832,8 @@ MonoBehaviour:
   coilPositions: {fileID: 7216207930811830561, guid: f541d1d63768a4141bdd10cba23f6093,
     type: 3}
   bossManager: {fileID: 5681058328325204670}
-  timeElapsed: 0
-  timeElapsed2: 0
+  timeElapsed: 1
+  timeElapsed2: 1
   coil: {fileID: 100000, guid: 907a4d05bab06b6429ae9d8d64d29d5a, type: 3}
   coilSpeed: 0.2
   ThunderPower: 7
@@ -862,16 +854,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 7848613867076063587, guid: 287976807ab6a0e469170ca9cd314c48, type: 3}
-  bossManager: {fileID: 0}
-  reCast: 3
+  bossManager: {fileID: 5681058328325204670}
+  reCast: 1
   rapidFire: 0.3
   bulletNum: 6
   shotFlag: 0
-  pattern1: 
-  pattern2: 
-  pattern3: 
-  patternA: 0000000000000000
-  patternB: 
+  pattern1: 0300000002000000
+  pattern2: 030000000200000003000000
+  pattern3: 0300000001000000
+  patternA: 0400000002000000
+  patternB: 0400000001000000
 --- !u!114 &3599115683787121344
 MonoBehaviour:
   m_ObjectHideFlags: 0
