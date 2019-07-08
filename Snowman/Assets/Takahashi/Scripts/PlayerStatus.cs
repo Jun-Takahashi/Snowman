@@ -17,6 +17,7 @@ public class PlayerStatus : MonoBehaviour
     public float ChargeSpeed = 2.0f;
     [SerializeField, Header("プレイヤーの連射速度")]
     public float FireSpeed = 1;
+    public float Lv1FireSpeed = 1;
 
     private float span;
     private float Charge;
@@ -154,6 +155,7 @@ public class PlayerStatus : MonoBehaviour
             instanceB.transform.parent = transform;
             GameObject child = transform.GetChild(childCheck).gameObject;
             script = child.GetComponent<Firing>();
+            script.Charge(chargeP);
         }
 
         span += Time.deltaTime * 2;
@@ -172,7 +174,18 @@ public class PlayerStatus : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (span >= FireSpeed)
+            if(chargeP == 1)
+            {
+                if(span >= Lv1FireSpeed)
+                {
+                    script.SetTag(true, null);
+
+                    chargeP = 1;
+                    Charge = 0;
+                    span = 0;
+                }
+            }
+            else if (span >= FireSpeed)
             {
                 script.SetTag(true, null);
 
