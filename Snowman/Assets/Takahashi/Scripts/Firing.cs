@@ -8,6 +8,8 @@ public class Firing : MonoBehaviour
     public int Speed;
     [SerializeField, Header("Playerとの距離感")]
     public float distanceP = 0.5f;
+    [SerializeField, Header("弾のサイス倍率")]
+    public float Size = 0.5f;
 
     private bool Player;
     private string Enemys;
@@ -62,17 +64,17 @@ public class Firing : MonoBehaviour
             {
                 lieScale += 0.1f;
                 transform.localPosition += new Vector3(0, 0, distanceP) * 0.1f;
-                transform.localScale += new Vector3(0.5f, 0.5f, 0.5f) * 0.1f;
+                transform.localScale += new Vector3(Size, Size, Size) * 0.1f;
             }
             else
             {
-                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f) * chargeP;
+                transform.localScale = new Vector3(Size, Size, Size) * chargeP;
                 //チャージ量に応じて大きさを変える
             }
         }
         else
         {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f) * chargeP;
+            transform.localScale = new Vector3(Size, Size, Size) * chargeP;
             //チャージ量に応じて大きさを変える
         }
 
