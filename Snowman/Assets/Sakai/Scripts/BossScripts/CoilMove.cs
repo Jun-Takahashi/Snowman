@@ -52,7 +52,7 @@ public class CoilMove : MonoBehaviour
     /// <param name="size">放電のサイズ</param>
     public void Spark(int size, float Psize)
     {
-        transform.localScale = new Vector3(size, 0.1f, size);
+        transform.localScale = new Vector3(size, 1f, size);
         particle.transform.localScale = new Vector3(Psize, 0.1f, Psize);
         SparkFlag = false;
     }
@@ -76,7 +76,7 @@ public class CoilMove : MonoBehaviour
     /// <returns>距離が一致していたらtrueを返す</returns>
     bool DistanceObject(GameObject obj, Vector3 point)
     {
-        bool flag = Vector3.Distance(obj.transform.position, point) < 0.5f;
+        bool flag = Vector3.Distance(obj.transform.position, point) < 1f;
         return flag;
     }
 }

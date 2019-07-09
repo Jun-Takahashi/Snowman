@@ -25,6 +25,8 @@ public class BossManager : MonoBehaviour
     private BossMove bossMove = null;
     [SerializeField]
     private SparkLiner sparkLiner = null;
+    [SerializeField]
+    private BossShot bossShot = null;
 
     public bool sparkFlag = false;
 
@@ -54,6 +56,7 @@ public class BossManager : MonoBehaviour
             bossMove.Pinch();
             pinchFlag = true;
             bossState = BossState.Pinch;
+            bossShot.MoveCheck();
         }
         if (BossHp <= 0)
         {

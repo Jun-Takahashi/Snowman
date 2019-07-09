@@ -133,10 +133,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossState: 0
-  BossHp: 10
-  BossHpPinch: 5
+  BossHp: 50
+  BossHpPinch: 30
   bossMove: {fileID: 4587539237666783067}
   sparkLiner: {fileID: 3568344745808769631}
+  bossShot: {fileID: 7313156101629251210}
   sparkFlag: 0
   pinchFlag: 0
 --- !u!54 &3880321653724918866
@@ -174,7 +175,7 @@ MonoBehaviour:
   timeElapsed2: 0
   coil: {fileID: 100000, guid: c46a529abd2dcd244b8ce9c22615cddf, type: 3}
   coilSpeed: 0.2
-  ThunderPower: 7
+  ThunderPower: 8
   ParticlePower: 1
   SparkTime: 2
   SparkingTime: 1
@@ -194,14 +195,17 @@ MonoBehaviour:
   Bullet: {fileID: 7848613867076063587, guid: 287976807ab6a0e469170ca9cd314c48, type: 3}
   bossManager: {fileID: 2075973706126713316}
   reCast: 3
-  rapidFire: 0.3
-  bulletNum: 6
+  pinchReCast: 0.1
+  rapidFire: 0.6
+  pinchRapidFire: 0.1
   shotFlag: 0
   pattern1: 010000000200000003000000010000000200000003000000
-  pattern2: 030000000200000001000000
-  pattern3: 030000000300000003000000
-  patternA: 0a0000000a000000
-  patternB: 050000000500000005000000
+  pattern2: 0200000003000000
+  pattern3: 020000000200000002000000
+  patternA: 020000000300000002000000
+  patternB: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
+  rightOrLeft: 0
+  AdjustmentBullet: {x: 1, y: 0.5, z: 0}
 --- !u!114 &3861060134080044753
 MonoBehaviour:
   m_ObjectHideFlags: 0

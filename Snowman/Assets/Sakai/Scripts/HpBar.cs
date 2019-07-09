@@ -16,8 +16,7 @@ public class HpBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hpBar = FindObjectOfType<Slider>();
-        hpBar.gameObject.SetActive(false);
+        //hpBar.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
