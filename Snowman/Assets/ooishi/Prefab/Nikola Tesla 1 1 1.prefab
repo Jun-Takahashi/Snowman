@@ -876,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046517c8e573ebc4d9a9b619544f2763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBar: {fileID: 2574640376833990083, guid: e1cc62bca69054a469ae0df27e0cea9c, type: 3}
+  hpBar: {fileID: 0}
   bossManager: {fileID: 5681058328325204670}
 --- !u!1 &6365930554214446288
 GameObject:
