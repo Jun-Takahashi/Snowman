@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
-    [SerializeField,Header("プレイヤーの残機")]
-    public int Hp;
     [SerializeField, Header("プレイヤーの移動速度")]
     public float Speed = 1;
     [SerializeField, Header("プレイヤーの弾")]
@@ -17,13 +15,23 @@ public class PlayerStatus : MonoBehaviour
     public float ChargeSpeed = 2.0f;
     [SerializeField, Header("プレイヤーの連射速度")]
     public float FireSpeed = 1;
+    public float Lv1FireSpeed = 1;
 
     private float span;
     private float Charge;
     private int chargeP;
     private Firing script;
 
+    private bool Invincibly;
+    private float InvinciblyTime;
+    private float high;
+    
+    private GameObject ReSpawnGO;
+    private bool active;
+    private float activeTime;
+
     private int childCheck;//子オブジェクトが初期でいくつあるか
+    private GameObject nuton;
 
     private float x, z;
 
@@ -33,7 +41,11 @@ public class PlayerStatus : MonoBehaviour
         Charge = 0;
         chargeP = 1;
         x = 0; z = 0;
+
+        ReSpawnGO = GameObject.Find("PlayerReSpawn");
+
         childCheck = transform.childCount;
+        nuton = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -154,7 +166,7 @@ public class PlayerStatus : MonoBehaviour
             instanceB.transform.parent = transform;
             GameObject child = transform.GetChild(childCheck).gameObject;
             script = child.GetComponent<Firing>();
-            Debug.Log(childCheck);
+            script.Charge(chargeP);
         }
 
         span += Time.deltaTime * 2;
@@ -173,7 +185,18 @@ public class PlayerStatus : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (span >= FireSpeed)
+            if(chargeP == 1)
+            {
+                if(span >= Lv1FireSpeed)
+                {
+                    script.SetTag(true, null);
+
+                    chargeP = 1;
+                    Charge = 0;
+                    span = 0;
+                }
+            }
+            else if (span >= FireSpeed)
             {
                 script.SetTag(true, null);
 
@@ -184,28 +207,63 @@ public class PlayerStatus : MonoBehaviour
         }
         #endregion
 
-        #region 残機管理
-
-        if (Hp<=0)
+        #region　復活処理
+        if (Invincibly)
         {
-            SceneManager.LoadScene("EndingScene");
-            Destroy(gameObject);
-        }
+            if(activeTime >= 0.5f)
+            {
+                if(active)
+                {
+                    active = false;
+                }
+                else
+                {
+                    active = true;
+                }
 
+                nuton.SetActive(active);
+                activeTime = 0;
+            }
+            high += Time.deltaTime;
+            activeTime += Time.deltaTime;
+        }
+        if(high>= InvinciblyTime)
+        {
+            Invincibly = false;
+            high = 0;
+
+            nuton.SetActive(true);
+        }
         #endregion
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (Invincibly == false)
         {
-            Hp--;
+            if (collision.gameObject.tag == "Enemy")
+            {
+                ReSpawnGO.GetComponent<ReSpawn>().SetPlace(transform.position);
+                Destroy(gameObject);
+            }
+            if (collision.gameObject.tag == "BulletE")
+            {
+                Firing script = collision.gameObject.GetComponent<Firing>();
+                Destroy(collision.gameObject);
+
+                ReSpawnGO.GetComponent<ReSpawn>().SetPlace(transform.position);
+                Destroy(gameObject);
+            }
         }
-        if(collision.gameObject.tag == "BulletE")
-        {
-            Firing script = collision.gameObject.GetComponent<Firing>();
-            Hp -= script.DamageCheck();
-            Destroy(collision.gameObject);
-        }
+    }
+
+    /// <summary>
+    /// 無敵時間設定
+    /// </summary>
+    /// <param name="invincibly"></param>
+    public void ReSpawn(float invincibly)
+    {
+        InvinciblyTime = invincibly;
+        Invincibly = true;
     }
 }

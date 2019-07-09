@@ -32,35 +32,35 @@ public class DiagonalEStatus : MonoBehaviour
     void Update()
     {
         #region 移動処理
-        if (set)
-        {
-            if (Vector3.Distance(transform.position, distination - new Vector3(1.5f, 0, 0)) < 0.001)
-            {
-                target = distination + new Vector3(1.5f, 0, 0);
-            }
-            if (Vector3.Distance(transform.position, distination + new Vector3(1.5f, 0, 0)) < 0.001)
-            {
-                target = distination - new Vector3(1.5f, 0, 0);
-            }
+        //if (set)
+        //{
+        //    if (Vector3.Distance(transform.position, distination - new Vector3(1.5f, 0, 0)) < 0.001)
+        //    {
+        //        target = distination + new Vector3(1.5f, 0, 0);
+        //    }
+        //    if (Vector3.Distance(transform.position, distination + new Vector3(1.5f, 0, 0)) < 0.001)
+        //    {
+        //        target = distination - new Vector3(1.5f, 0, 0);
+        //    }
 
-            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
-        }
-        else
-        {
-            if (Vector3.Distance(transform.position, target) < 0.001)
-            {
-                targetC++;
-                target = moveP[targetC];
-            }
+        //    transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
+        //}
+        //else
+        //{
+        //    if (Vector3.Distance(transform.position, target) < 0.001)
+        //    {
+        //        targetC++;
+        //        target = moveP[targetC];
+        //    }
 
-            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
+        //    transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * Speed);
 
-            if (Vector3.Distance(transform.position, distination) < 0.001)//終着点にて削除
-            {
-                target = distination - new Vector3(1.5f, 0, 0);
-                set = true;
-            }
-        }
+        //    if (Vector3.Distance(transform.position, distination) < 0.001)//終着点にて削除
+        //    {
+        //        target = distination - new Vector3(1.5f, 0, 0);
+        //        set = true;
+        //    }
+        //}
         #endregion
 
         #region 射撃管理
