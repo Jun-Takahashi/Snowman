@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3084361066476971100}
   - component: {fileID: 3084361066476971101}
   m_Layer: 0
-  m_Name: Enemy 4
+  m_Name: Enemy 5
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2671498987282319734}
+  - {fileID: 8339822568083880452}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -124,11 +124,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  Hp: 2
-  Bullet: {fileID: 7848613867076063587, guid: 287976807ab6a0e469170ca9cd314c48, type: 3}
+  Hp: 3
+  Bullet: {fileID: 7848613867076063587, guid: da23fb63574d0cc4288def3f8dda7bdc, type: 3}
+  BulletPower: 0300000002000000
   FireSpeed: 2
-  Power: 2
---- !u!1001 &2471220706239766188
+  ReloadTime: 2.5
+--- !u!1001 &8423306350966697438
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -212,9 +213,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a82c813e36ce0f42b13da2632d6c1c8, type: 3}
---- !u!4 &2671498987282319734 stripped
+--- !u!4 &8339822568083880452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 529340146941007834, guid: 9a82c813e36ce0f42b13da2632d6c1c8,
     type: 3}
-  m_PrefabInstance: {fileID: 2471220706239766188}
+  m_PrefabInstance: {fileID: 8423306350966697438}
   m_PrefabAsset: {fileID: 0}
