@@ -99,11 +99,11 @@ public class BossShot : MonoBehaviour
                 if (Pnum < Ilist.Count)
                 {
                     shot(Bullet);
-                    Pnum++;
                     if (rightOrLeft)
                         rightOrLeft = false;
                     else if (!rightOrLeft)
                         rightOrLeft = true;
+                    Pnum++;
 
                 }
                 else if (Pnum >= Ilist.Count)
@@ -123,15 +123,16 @@ public class BossShot : MonoBehaviour
     /// <param name="bullet">弾オブジェクト</param>
     void shot(GameObject bullet)
     {
+        
         if (rightOrLeft)
         {
-
+            
             anim.SetBool("direction", rightOrLeft);
-            AdjustmentBullet.x = AdjustmentBullet.x * 1;
+            AdjustmentBullet.x = AdjustmentBullet.x * -1;
         }
         else if (!rightOrLeft)
         {
-
+            
             anim.SetBool("direction", rightOrLeft);
             AdjustmentBullet.x = AdjustmentBullet.x * -1;
         }

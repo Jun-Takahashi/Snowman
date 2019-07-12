@@ -42,7 +42,7 @@ public class BossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(BossHp);
+        //Debug.Log(BossHp);
         if (Input.GetKeyDown(KeyCode.P))
         {
             BossDamage(1);
