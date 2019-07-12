@@ -27,7 +27,6 @@ public class ReSpawn : MonoBehaviour
             GameObject instanceB = Instantiate(Player, RespawnPlace, Quaternion.identity);
             PlayerStatus script = instanceB.GetComponent<PlayerStatus>();
             script.ReSpawn(InvinciblyTime);
-            Hp--;
 
             time = 0;
         }
@@ -36,7 +35,6 @@ public class ReSpawn : MonoBehaviour
         if (Hp <= 0)
         {
             SceneManager.LoadScene("EndingScene");
-            Destroy(gameObject);
         }
         #endregion
     }
@@ -48,6 +46,11 @@ public class ReSpawn : MonoBehaviour
     public void SetPlace(Vector3 RespawnPlace)
     {
         this.RespawnPlace = RespawnPlace;
+    }
+
+    public void Death()
+    {
+        Hp--;
     }
 
     #region 特定タグの個数検索

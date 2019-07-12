@@ -243,15 +243,18 @@ public class PlayerStatus : MonoBehaviour
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                ReSpawnGO.GetComponent<ReSpawn>().SetPlace(transform.position);
+                ReSpawn script = ReSpawnGO.GetComponent<ReSpawn>();
+                script.SetPlace(transform.position);
+                script.Death();
                 Destroy(gameObject);
             }
             if (collision.gameObject.tag == "BulletE")
             {
-                Firing script = collision.gameObject.GetComponent<Firing>();
                 Destroy(collision.gameObject);
 
-                ReSpawnGO.GetComponent<ReSpawn>().SetPlace(transform.position);
+                ReSpawn script = ReSpawnGO.GetComponent<ReSpawn>();
+                script.SetPlace(transform.position);
+                script.Death();
                 Destroy(gameObject);
             }
         }
