@@ -4729,7 +4729,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1029329607139056421}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1029329606047490516
 MeshFilter:
@@ -4820,7 +4820,7 @@ Transform:
   m_Children:
   - {fileID: 1029329605489656915}
   m_Father: {fileID: 1029329607139056421}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &1029329606503020566
 ParticleSystem:
@@ -9518,8 +9518,8 @@ Transform:
   m_LocalPosition: {x: 0.808, y: 4.13, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1029329606047490519}
   - {fileID: 1029329606503020560}
+  - {fileID: 1029329606047490519}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
