@@ -22,7 +22,7 @@ public class ReSpawn : MonoBehaviour
         {
             time += Time.deltaTime;
         }
-        if(time >=1.5f)
+        if(time >=0.1f)
         {
             GameObject instanceB = Instantiate(Player, RespawnPlace, Quaternion.identity);
             PlayerStatus script = instanceB.GetComponent<PlayerStatus>();
