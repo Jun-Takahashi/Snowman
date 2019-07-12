@@ -55,11 +55,12 @@ public class BossShot : MonoBehaviour
     [SerializeField, Header("弾の出現位置を調整用")]
     public Vector3 AdjustmentBullet = new Vector3(0.3f, 0.5f, 0);
 
-
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        //anim = GetComponent<Animator>();
         blletPattern = new Dictionary<int, List<int>>
         {
             { 1,pattern1 },
@@ -103,6 +104,7 @@ public class BossShot : MonoBehaviour
                         rightOrLeft = false;
                     else if (!rightOrLeft)
                         rightOrLeft = true;
+
                 }
                 else if (Pnum >= Ilist.Count)
                 {
@@ -123,10 +125,14 @@ public class BossShot : MonoBehaviour
     {
         if (rightOrLeft)
         {
+
+            anim.SetBool("direction", rightOrLeft);
             AdjustmentBullet.x = AdjustmentBullet.x * 1;
         }
         else if (!rightOrLeft)
         {
+
+            anim.SetBool("direction", rightOrLeft);
             AdjustmentBullet.x = AdjustmentBullet.x * -1;
         }
 
@@ -135,6 +141,7 @@ public class BossShot : MonoBehaviour
         script.SetTag(false, "Enemy");
 
         script.Charge(Ilist[Pnum]);
+        anim.SetTrigger("shot");
     }
 
     /// <summary>
