@@ -206,6 +206,7 @@ MonoBehaviour:
   patternB: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
   rightOrLeft: 0
   AdjustmentBullet: {x: 1, y: 0.5, z: 0}
+  anim: {fileID: 8381979008349214972}
 --- !u!114 &3861060134080044753
 MonoBehaviour:
   m_ObjectHideFlags: 0
