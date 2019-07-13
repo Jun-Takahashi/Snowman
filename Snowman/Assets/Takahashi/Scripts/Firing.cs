@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Firing : MonoBehaviour
 {
+    [SerializeField, Header("ジャンクオブジェクト")]
+    public List<GameObject> JunkObject;
     [SerializeField, Header("移動速度")]
     public int Speed;
     [SerializeField, Header("Playerとの距離感")]
@@ -17,6 +19,12 @@ public class Firing : MonoBehaviour
     private int chargeP;
 
     private float lieScale;
+    private bool setScale;
+
+    public void Start()
+    {
+        setScale = false;
+    }
     
     /// <summary>
     /// タグ設定
@@ -25,6 +33,7 @@ public class Firing : MonoBehaviour
     /// <param name="Enemys">Enemyの種類は？</param>
     public void SetTag(bool Player,string Enemys)
     {
+        #region 移動量設定
         if(Player)
         {
             gameObject.tag = "BulletP";
@@ -48,6 +57,7 @@ public class Firing : MonoBehaviour
                 velocity = new Vector3(-1, 0, -1);
             }
         }
+        #endregion
 
         this.Player = Player;
         this.Enemys = Enemys;
@@ -57,8 +67,10 @@ public class Firing : MonoBehaviour
     {
         transform.position += (velocity * Speed) * Time.deltaTime;//移動
 
-        if (gameObject.tag == "Untagged" ||//チャージ段階か
-            gameObject.tag =="BulletP")//Playerが発射した弾だったら
+        #region スケール設定
+        if(setScale)
+        {/*下記を飛ばします*/}
+        else if (gameObject.tag == "Untagged")//チャージ段階か
         {
             if (lieScale < chargeP)
             {
@@ -72,11 +84,29 @@ public class Firing : MonoBehaviour
                 //チャージ量に応じて大きさを変える
             }
         }
-        else
+        else if(gameObject.tag == "BulletP")//Playerの弾だったら
+        {
+            if (lieScale < chargeP)
+            {
+                lieScale += 0.1f;
+                transform.localPosition += new Vector3(0, 0, distanceP) * 0.1f;
+                transform.localScale += new Vector3(Size, Size, Size) * 0.1f;
+            }
+            else
+            {
+                transform.localScale = new Vector3(Size, Size, Size) * chargeP;
+                //チャージ量に応じて大きさを変える
+                setScale = true;//スケール設定完了
+            }
+        }
+        else//Enemyの弾だったら
         {
             transform.localScale = new Vector3(Size, Size, Size) * chargeP;
             //チャージ量に応じて大きさを変える
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            setScale = true;//スケール設定完了
         }
+        #endregion
 
         #region 画面端判定
         //上画面端ぃ→消す
@@ -139,6 +169,17 @@ public class Firing : MonoBehaviour
     public void Charge(int chargeP)
     {
         this.chargeP = chargeP;
+
+        if(gameObject.tag=="BulletE")
+        {
+            for(int i=0; i<chargeP; i++)
+            {
+                GameObject Junk = JunkObject[Random.Range(0,JunkObject.Count)];
+                Vector3 settingPos = transform.position + new Vector3(Random.Range(0.0f, 0.5f), Random.Range(0.0f, 0.5f), Random.Range(0.0f, 0.5f));
+                GameObject InstanceJ = Instantiate(Junk, settingPos, Quaternion.identity,transform);
+                InstanceJ.transform.Rotate(new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)), Random.Range(0, 361));
+            }
+        }
     }
 
     /// <summary>
