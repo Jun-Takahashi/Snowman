@@ -105,8 +105,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1153202808b50b243bde5186f66da9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JunkObject:
+  - {fileID: 7194656796700465594, guid: 50830a844312f344f91fe5f64f2cc9d8, type: 3}
+  - {fileID: 6658409941539947360, guid: ad80e7464184bb64daaf1d1a0d04d0cc, type: 3}
+  - {fileID: 6797959557826988237, guid: 23c613977ba384d4ea786becf93bf846, type: 3}
   Speed: 10
   distanceP: 0.5
+  Size: 0.5
 --- !u!54 &7518503657188194520
 Rigidbody:
   m_ObjectHideFlags: 0
