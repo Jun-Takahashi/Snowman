@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
-  Bullet: {fileID: 7848613867076063587, guid: da23fb63574d0cc4288def3f8dda7bdc, type: 3}
+  Bullet: {fileID: 7848613867076063587, guid: 52cd15a64ba49df41a2d71e0fb1954bb, type: 3}
   MaxCharge: 3
   ChargeSpeed: 1
   FireSpeed: 1
