@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   Hp: 3
-  Bullet: {fileID: 7848613867076063587, guid: fbc056a2b56ae11498616335e2ed8b07, type: 3}
+  Bullet: {fileID: 7848613867076063587, guid: 738215596fe9184439269fbcfeffbda0, type: 3}
   BulletPower: 0300000002000000
   FireSpeed: 2
   ReloadTime: 2.5
