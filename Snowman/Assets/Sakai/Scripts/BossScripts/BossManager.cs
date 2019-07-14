@@ -29,8 +29,9 @@ public class BossManager : MonoBehaviour
     private BossShot bossShot = null;
 
     [SerializeField, Header("ダメージエフェクト")]
-    private ParticleSystem damageEffect;
-    //public float effectTime = 0.1f;
+    private ParticleSystem damageEffect = null;
+    [SerializeField]
+    private InstanceEffect instanceEffect;
 
     public bool sparkFlag = false;
 
@@ -39,9 +40,9 @@ public class BossManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //instanceEffect = GetComponent<InstanceEffect>();
         bossState = BossState.Normal;
         BossHpNum = BossHp;
-        //damageEffect.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,7 +51,7 @@ public class BossManager : MonoBehaviour
         //Debug.Log(BossHp);
         if (Input.GetKeyDown(KeyCode.P))
         {
-            BossDamage(1);
+            BossDamage(20);
         }
 
         if (BossHp < BossHpPinch && !pinchFlag)
@@ -65,9 +66,9 @@ public class BossManager : MonoBehaviour
         }
         if (BossHp <= 0)
         {
+            instanceEffect.EffectInstance(transform.position);
             transform.gameObject.SetActive(false);
-            SceneManager.LoadScene("ClearScene");
-
+            //SceneManager.LoadScene("ClearScene");
         }
 
     }
