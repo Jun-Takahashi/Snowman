@@ -112,6 +112,7 @@ MonoBehaviour:
   Speed: 10
   distanceP: 0.5
   Size: 0.5
+  JunkNum: 3
 --- !u!54 &7518503657188194520
 Rigidbody:
   m_ObjectHideFlags: 0
