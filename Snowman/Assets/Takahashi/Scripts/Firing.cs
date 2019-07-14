@@ -23,6 +23,9 @@ public class Firing : MonoBehaviour
     private float lieScale;
     private bool setScale;
 
+
+    private int childCheck;//子オブジェクトが初期でいくつあるか
+
     public void Start()
     {
         setScale = false;
@@ -63,6 +66,8 @@ public class Firing : MonoBehaviour
 
         this.Player = Player;
         this.Enemys = Enemys;
+        
+        childCheck = transform.childCount;
     }
     
     void Update()
@@ -187,7 +192,7 @@ public class Firing : MonoBehaviour
 
                     for(int i=0; i<damage; i++)
                     {
-                        GameObject Junk = transform.GetChild(0).gameObject;
+                        GameObject Junk = transform.GetChild(childCheck).gameObject;
                         Junk.transform.parent = null;
                     }
                 }
