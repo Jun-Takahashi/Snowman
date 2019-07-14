@@ -12,6 +12,8 @@ public class Firing : MonoBehaviour
     public float distanceP = 0.5f;
     [SerializeField, Header("弾のサイス倍率")]
     public float Size = 0.5f;
+    [SerializeField, Header("威力に対してJunkいくつ？")]
+    public int JunkNum = 1;
 
     private bool Player;
     private string Enemys;
@@ -20,6 +22,9 @@ public class Firing : MonoBehaviour
 
     private float lieScale;
     private bool setScale;
+
+
+    private int childCheck;//子オブジェクトが初期でいくつあるか
 
     public void Start()
     {
@@ -61,6 +66,8 @@ public class Firing : MonoBehaviour
 
         this.Player = Player;
         this.Enemys = Enemys;
+        
+        childCheck = transform.childCount;
     }
     
     void Update()
@@ -103,12 +110,12 @@ public class Firing : MonoBehaviour
         {
             transform.localScale = new Vector3(Size, Size, Size) * chargeP;
             //チャージ量に応じて大きさを変える
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            //gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-            for (int i = 0; i < chargeP; i++)//ジャンクを威力分生成
+            for (int i = 0; i < chargeP * JunkNum; i++)//ジャンクを威力分生成
             {
                 GameObject Junk = JunkObject[Random.Range(0, JunkObject.Count)];
-                Vector3 settingPos = transform.position + new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));//ジャンクの位置決め
+                Vector3 settingPos = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f));//ジャンクの位置決め
                 GameObject InstanceJ = Instantiate(Junk, settingPos, Quaternion.identity, transform);//生成時位置指定
                 InstanceJ.transform.Rotate(new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)), Random.Range(0, 361));//ジャンクの回転量決め
 
@@ -185,7 +192,7 @@ public class Firing : MonoBehaviour
 
                     for(int i=0; i<damage; i++)
                     {
-                        GameObject Junk = transform.GetChild(0).gameObject;
+                        GameObject Junk = transform.GetChild(childCheck).gameObject;
                         Junk.transform.parent = null;
                     }
                 }
