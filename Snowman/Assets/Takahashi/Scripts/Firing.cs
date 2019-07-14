@@ -152,7 +152,7 @@ public class Firing : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         #region　当たり判定
-        if (Player)
+        if (Player)//プレイヤーの弾
         {
             if (collision.gameObject.tag == "BulletE")
             {
@@ -160,13 +160,34 @@ public class Firing : MonoBehaviour
                 Firing script = bullet.GetComponent<Firing>();
                 if(script.DamageCheck() >= chargeP)//自分より大きい又は同じ大きさの弾に当たったら
                 {
-                    script.Damage(chargeP);//相手の大きさを変える
+                    //script.Damage(chargeP);//相手の大きさを変える
                     Destroy(gameObject);//自分は消える
                 }
                 else//自分より小さな弾に当たったら
                 {
                     chargeP += script.DamageCheck();//大きくなって
+                    setScale = false;
                     Destroy(bullet);//相手を消す
+                }
+            }
+        }
+        if(!Player)//エネミーの弾
+        {
+            if (collision.gameObject.tag == "BulletP")
+            {
+                GameObject bullet = collision.gameObject;
+                Firing script = bullet.GetComponent<Firing>();
+                if(script.DamageCheck() <= chargeP)//自分より小さな弾に当たったら
+                {
+                    int damage = script.DamageCheck();
+                    chargeP -= damage;//小さくなって
+                    setScale = false;
+
+                    for(int i=0; i<damage; i++)
+                    {
+                        GameObject Junk = transform.GetChild(0).gameObject;
+                        Junk.transform.parent = null;
+                    }
                 }
             }
         }
