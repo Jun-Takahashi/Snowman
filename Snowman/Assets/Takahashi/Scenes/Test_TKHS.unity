@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 1718036165}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1015,5 +1015,10 @@ PrefabInstance:
       propertyPath: ReSpawnGO
       value: 
       objectReference: {fileID: 1536157636}
+    - target: {fileID: 318200425225373213, guid: aef783a8620c2114c942da6c9eb79dce,
+        type: 3}
+      propertyPath: MaxCharge
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aef783a8620c2114c942da6c9eb79dce, type: 3}
