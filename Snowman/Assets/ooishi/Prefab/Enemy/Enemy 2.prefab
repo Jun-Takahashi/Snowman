@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3084361066476971100}
   - component: {fileID: 3084361066476971101}
   m_Layer: 0
-  m_Name: Enemy 24
+  m_Name: Enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   Hp: 2
-  Bullet: {fileID: 7848613867076063587, guid: da23fb63574d0cc4288def3f8dda7bdc, type: 3}
+  Bullet: {fileID: 7848613867076063587, guid: fbc056a2b56ae11498616335e2ed8b07, type: 3}
   BulletPower: 02000000
   FireSpeed: 2
   ReloadTime: 2.5
