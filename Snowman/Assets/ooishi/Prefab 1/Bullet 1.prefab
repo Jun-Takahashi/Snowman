@@ -106,9 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1153202808b50b243bde5186f66da9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JunkObject: []
   Speed: 10
   distanceP: 0.5
   Size: 1
+  JunkNum: 0
 --- !u!54 &7518503657188194520
 Rigidbody:
   m_ObjectHideFlags: 0
