@@ -15,6 +15,6 @@ public class ParticleSize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.localScale += new Vector3();
+        gameObject.transform.localScale += new Vector3(siz,siz,siz);
     }
 }
