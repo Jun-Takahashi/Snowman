@@ -17,7 +17,7 @@ public class JunkScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground")//床だったら
         {
-            Destroy(gameObject);//消す
+            Destroy(gameObject);//消える
         }
     }
 }

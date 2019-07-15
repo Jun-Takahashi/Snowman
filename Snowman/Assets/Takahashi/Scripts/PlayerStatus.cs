@@ -62,25 +62,33 @@ public class PlayerStatus : MonoBehaviour
         bool moveX = false, moveZ = false;
 
         #region 加速
-        if (Input.GetKey(KeyCode.W))
+        if (/*Input.GetKey(KeyCode.W)||//Wキー
+            Input.GetKey(KeyCode.UpArrow) ||//アローキー*/
+            Input.GetAxisRaw("Vertical") > 0)
         {
             if (z < 0) z += Time.deltaTime;
             if (z < 0.5f) z += Time.deltaTime;
             moveZ = true;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (/*Input.GetKey(KeyCode.S)||//Sキー
+            Input.GetKey(KeyCode.DownArrow) ||//アローキー*/
+            Input.GetAxisRaw("Vertical") < 0)
         {
             if (z > 0) z -= Time.deltaTime;
             if (z > -0.5f) z -= Time.deltaTime;
             moveZ = true;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (/*Input.GetKey(KeyCode.D) ||//Dキー
+            Input.GetKey(KeyCode.RightArrow) ||//アローキー*/
+            Input.GetAxisRaw("Horizontal") > 0)
         {
             if (x < 0) x += Time.deltaTime;
             if (x < 0.5f) x += Time.deltaTime;
             moveX = true;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (/*Input.GetKey(KeyCode.A)||//Aキー
+            Input.GetKey(KeyCode.LeftArrow) ||//アローキー*/
+            Input.GetAxisRaw("Horizontal") < 0)
         {
             if (x > 0) x -= Time.deltaTime;
             if (x > -0.5f) x -= Time.deltaTime;
@@ -183,7 +191,8 @@ public class PlayerStatus : MonoBehaviour
             script.Charge(chargeP);//チャージ
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)||
+            Input.GetButtonDown("Fire1"))
         {
             if(chargeP == 1)
             {
