@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3084361066476971089}
   - component: {fileID: 3084361066476971100}
   - component: {fileID: 3084361066476971101}
-  - component: {fileID: 3783474983090025500}
+  - component: {fileID: 5940216571401142266}
   m_Layer: 0
-  m_Name: Enemy 3
+  m_Name: Enemy 4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,10 +127,10 @@ MonoBehaviour:
   Speed: 3
   Hp: 2
   Bullet: {fileID: 7848613867076063587, guid: 738215596fe9184439269fbcfeffbda0, type: 3}
-  BulletPower: 03000000
+  BulletPower: 04000000
   FireSpeed: 1
-  ReloadTime: 2
---- !u!114 &3783474983090025500
+  ReloadTime: 4
+--- !u!114 &5940216571401142266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
