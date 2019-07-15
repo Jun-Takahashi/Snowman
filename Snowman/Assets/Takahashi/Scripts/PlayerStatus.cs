@@ -237,7 +237,7 @@ public class PlayerStatus : MonoBehaviour
         #endregion
     }
 
-    void OnTriggerEnter(Collider collision)
+    void OnTriggerStay(Collider collision)
     {
         if (Invincibly == false)
         {
