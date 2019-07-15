@@ -15,6 +15,7 @@ public class EnemyFac : MonoBehaviour
 
     [SerializeField, Header("ボスオブジェクト")]
     public GameObject Boss;
+    public Vector3 BossPos;
 
     private float time = 0;
     private int nextEnemy = 0;//次に生成されるEnemy
@@ -56,7 +57,7 @@ public class EnemyFac : MonoBehaviour
 
         if(BossWave == selectPattern.Count)
         {
-            Instantiate(Boss, new Vector3(0, 1, 10), Quaternion.identity);
+            Instantiate(Boss, BossPos, Quaternion.identity);
             Destroy(gameObject);
         }
     }
