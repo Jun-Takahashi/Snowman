@@ -22,13 +22,15 @@ public class Firing : MonoBehaviour
 
     private float lieScale;
     private bool setScale;
-
-
+    
     private int childCheck;//子オブジェクトが初期でいくつあるか
+
+    private AudioSource AbsorbSE;//吸収SE
 
     public void Start()
     {
         setScale = false;
+        AbsorbSE = GetComponent<AudioSource>();
     }
     
     /// <summary>
@@ -173,6 +175,8 @@ public class Firing : MonoBehaviour
                         chargeP += script.DamageCheck();//大きくなって
                         setScale = false;
                         Destroy(bullet);//相手を消す
+
+                        AbsorbSE.PlayOneShot(AbsorbSE.clip);//吸収音を流す
                     }
                 }
             }
