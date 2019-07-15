@@ -15,16 +15,7 @@ public class InstanceEffect : MonoBehaviour
     {
         startEffect = false;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (startEffect)
-        {
-            
-        }
-    }
-
+    
     public void EffectInstance(Vector3 pos)
     {
         if (!startEffect)
@@ -34,7 +25,5 @@ public class InstanceEffect : MonoBehaviour
             startEffect = true;
         }
     }
-
     
-
 }
