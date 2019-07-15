@@ -297,6 +297,7 @@ MonoBehaviour:
   bossShot: {fileID: 7313156101629251210}
   damageEffect: {fileID: 1354205502}
   instanceEffect: {fileID: 8427066072809600929}
+  gameOverDelay: 1
   sparkFlag: 0
   pinchFlag: 0
 --- !u!54 &3880321653724918866
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 2688712006605705909, guid: 09e66968ca016c14da606ae66c82d80a,
     type: 3}
+  startEffect: 0
 --- !u!1 &3029822549980167787
 GameObject:
   m_ObjectHideFlags: 0
