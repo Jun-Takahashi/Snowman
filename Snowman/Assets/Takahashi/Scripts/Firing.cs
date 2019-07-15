@@ -165,7 +165,7 @@ public class Firing : MonoBehaviour
             {
                 GameObject bullet = collision.gameObject;
                 Firing script = bullet.GetComponent<Firing>();
-                if(script.DamageCheck() <= chargeP)//自分より小さな弾に当たったら
+                if(script.DamageCheck() < chargeP)//自分より小さな弾に当たったら
                 {
                     chargeP += script.DamageCheck();//大きくなって
                     setScale = false;
@@ -179,7 +179,10 @@ public class Firing : MonoBehaviour
             {
                 GameObject bullet = collision.gameObject;
                 Firing script = bullet.GetComponent<Firing>();
-                if(script.DamageCheck() <= chargeP)//自分より小さな弾に当たったら
+                
+                Destroy(collision.gameObject);//プレイヤーの弾を消す
+
+                if (script.DamageCheck() <= chargeP)//自分より小さな弾に当たったら
                 {
                     int damage = script.DamageCheck();
                     chargeP -= damage;//小さくなって
@@ -190,8 +193,6 @@ public class Firing : MonoBehaviour
                         GameObject Junk = transform.GetChild(childCheck).gameObject;
                         Junk.transform.parent = null;
                     }
-
-                    Destroy(collision.gameObject);//プレイヤーの弾を消す
                 }
             }
         }
