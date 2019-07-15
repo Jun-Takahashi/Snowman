@@ -42,7 +42,7 @@ public class PlayerStatus : MonoBehaviour
         chargeP = 1;
         x = 0; z = 0;
 
-        ReSpawnGO = GameObject.Find("PlayerReSpaawn");
+        ReSpawnGO = GameObject.Find("PlayerReSpawn");
 
         childCheck = transform.childCount;
         nuton = transform.GetChild(0).gameObject;
