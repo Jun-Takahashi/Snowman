@@ -62,33 +62,33 @@ public class PlayerStatus : MonoBehaviour
         bool moveX = false, moveZ = false;
 
         #region 加速
-        if (Input.GetKey(KeyCode.W)||//Wキー
-            Input.GetKey(KeyCode.UpArrow) ||//アローキー
-            Input.GetAxis("Vertical") > 0)
+        if (/*Input.GetKey(KeyCode.W)||//Wキー
+            Input.GetKey(KeyCode.UpArrow) ||//アローキー*/
+            Input.GetAxisRaw("Vertical") > 0)
         {
             if (z < 0) z += Time.deltaTime;
             if (z < 0.5f) z += Time.deltaTime;
             moveZ = true;
         }
-        if (Input.GetKey(KeyCode.S)||//Sキー
-            Input.GetKey(KeyCode.DownArrow) ||//アローキー
-            Input.GetAxis("Vertical") < 0)
+        if (/*Input.GetKey(KeyCode.S)||//Sキー
+            Input.GetKey(KeyCode.DownArrow) ||//アローキー*/
+            Input.GetAxisRaw("Vertical") < 0)
         {
             if (z > 0) z -= Time.deltaTime;
             if (z > -0.5f) z -= Time.deltaTime;
             moveZ = true;
         }
-        if (Input.GetKey(KeyCode.D) ||//Dキー
-            Input.GetKey(KeyCode.RightArrow) ||//アローキー
-            Input.GetAxis("Horizontal") > 0)
+        if (/*Input.GetKey(KeyCode.D) ||//Dキー
+            Input.GetKey(KeyCode.RightArrow) ||//アローキー*/
+            Input.GetAxisRaw("Horizontal") > 0)
         {
             if (x < 0) x += Time.deltaTime;
             if (x < 0.5f) x += Time.deltaTime;
             moveX = true;
         }
-        if (Input.GetKey(KeyCode.A)||//Aキー
-            Input.GetKey(KeyCode.LeftArrow) ||//アローキー
-            Input.GetAxis("Horizontal") < 0)
+        if (/*Input.GetKey(KeyCode.A)||//Aキー
+            Input.GetKey(KeyCode.LeftArrow) ||//アローキー*/
+            Input.GetAxisRaw("Horizontal") < 0)
         {
             if (x > 0) x -= Time.deltaTime;
             if (x > -0.5f) x -= Time.deltaTime;
