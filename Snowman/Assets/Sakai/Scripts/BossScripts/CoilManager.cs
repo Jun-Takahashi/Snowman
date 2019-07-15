@@ -19,11 +19,7 @@ public class CoilManager : MonoBehaviour
     }
 
     //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
-
+    
     /// <summary>
     /// コイルリストに追加する処理
     /// </summary>

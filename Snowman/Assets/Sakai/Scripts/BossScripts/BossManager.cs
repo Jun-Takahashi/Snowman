@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
@@ -17,50 +18,57 @@ public class BossManager : MonoBehaviour
     public float BossHp = 10;
     private float BossHpNum;
 
+    [SerializeField, Header("ボスの動きが変わるHP（ピンチ）")]
+    private float BossHpPinch = 5;
+
     [SerializeField]
     private BossMove bossMove = null;
     [SerializeField]
     private SparkLiner sparkLiner = null;
+    [SerializeField]
+    private BossShot bossShot = null;
+
+    [SerializeField, Header("ダメージエフェクト")]
+    private ParticleSystem damageEffect = null;
+    [SerializeField]
+    private InstanceEffect instanceEffect;
 
     public bool sparkFlag = false;
 
-    bool flag = false;
+    public bool pinchFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        //transform.gameObject.SetActive(false);
-        //BossHp = 10;
-
+        //instanceEffect = GetComponent<InstanceEffect>();
         bossState = BossState.Normal;
-        //bossMove = GetComponent<BossMove>();
-        //sparkLiner = GetComponent<SparkLiner>();
         BossHpNum = BossHp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(BossHp);
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    BossDamage(1);
-        //}
-
-
-
-        if (BossHp < (BossHpNum / 2) && !flag)
+        //Debug.Log(BossHp);
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            bossMove.Crisis(bossMove.interval / 3, bossMove.speed * 3);
+            BossDamage(20);
+        }
+
+        if (BossHp < BossHpPinch && !pinchFlag)
+        {
+            bossMove.Crisis(bossMove.pinchInterval, bossMove.pinchSpeed);
             SparkLineFlag();
             sparkLiner.NewCoilFlag = true;
-            flag = true;
+            bossMove.Pinch();
+            pinchFlag = true;
             bossState = BossState.Pinch;
+            bossShot.MoveCheck();
         }
         if (BossHp <= 0)
         {
+            instanceEffect.EffectInstance(transform.position);
             transform.gameObject.SetActive(false);
-            SceneManager.LoadScene("ClearScene");
+            //SceneManager.LoadScene("ClearScene");
         }
 
     }
@@ -68,6 +76,8 @@ public class BossManager : MonoBehaviour
     public float BossDamage(int damage)
     {
         BossHp -= damage;
+        damageEffect.Play();
+        damageEffect.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
         return BossHp;
     }
 
@@ -81,7 +91,7 @@ public class BossManager : MonoBehaviour
         if (col.gameObject.tag == "BulletP")
         {
             BossDamage(col.gameObject.GetComponent<Firing>().DamageCheck());
+            Destroy(col.gameObject);
         }
-
     }
 }

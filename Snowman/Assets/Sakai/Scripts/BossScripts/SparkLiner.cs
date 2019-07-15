@@ -50,10 +50,10 @@ public class SparkLiner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (coilPositions == null && bossManager.sparkFlag)
-        {
-            coilPositions = FindObjectTag(coilPositions, "CoilPos");
-        }
+        //if (coilPositions == null && bossManager.sparkFlag)
+        //{
+        //    coilPositions = FindObjectTag(coilPositions, "CoilPos");
+        //}
 
         if (NewCoilFlag)
         {
@@ -67,7 +67,6 @@ public class SparkLiner : MonoBehaviour
             }
         }
 
-        Debug.Log(coilInstance);
         if (coilInstance != null && coilInstance.transform.GetChild(0).GetComponent<CoilMove>().SparkFlag)
         {
             timeElapsed = TimeCount(timeElapsed);
@@ -94,7 +93,7 @@ public class SparkLiner : MonoBehaviour
     void Shot(GameObject coil, float speed)
     {
         coil.transform.GetChild(0).GetComponent<CoilMove>()
-            .Move(coilPositions.transform.GetChild(Random.Range(0, 2))
+            .Move(coilPositions.transform.GetChild(Random.Range(0, (coilPositions.transform.childCount + 1)))
             .transform.position, speed);
     }
 

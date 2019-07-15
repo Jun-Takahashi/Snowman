@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ooishi\script\destry.cs" />
+     <Compile Include="Assets\ooishi\script\PlayerAnimManager.cs" />
+     <Compile Include="Assets\ooishi\script\Rotat.cs" />
      <Compile Include="Assets\Sakai\Scripts\BossScripts\BossManager.cs" />
      <Compile Include="Assets\Sakai\Scripts\BossScripts\BossMove.cs" />
      <Compile Include="Assets\Sakai\Scripts\BossScripts\BossShot.cs" />
@@ -64,15 +66,20 @@
      <Compile Include="Assets\Sakai\Scripts\Clear.cs" />
      <Compile Include="Assets\Sakai\Scripts\DeathPlayer.cs" />
      <Compile Include="Assets\Sakai\Scripts\Ending.cs" />
+     <Compile Include="Assets\Sakai\Scripts\HpBar.cs" />
+     <Compile Include="Assets\Sakai\Scripts\SceneChange.cs" />
      <Compile Include="Assets\Sakai\Scripts\ScrollScript.cs" />
      <Compile Include="Assets\Sakai\Scripts\Title.cs" />
      <Compile Include="Assets\Scripts\CharacterAttribute.cs" />
+     <Compile Include="Assets\StartFalse.cs" />
      <Compile Include="Assets\Takahashi\Scripts\DiagonalEStatus.cs" />
      <Compile Include="Assets\Takahashi\Scripts\EnemyFac.cs" />
      <Compile Include="Assets\Takahashi\Scripts\EnemyStatus.cs" />
      <Compile Include="Assets\Takahashi\Scripts\Firing.cs" />
+     <Compile Include="Assets\Takahashi\Scripts\PlayerHpBar.cs" />
      <Compile Include="Assets\Takahashi\Scripts\PlayerStatus.cs" />
      <Compile Include="Assets\Takahashi\Scripts\Screen.cs" />
+     <Compile Include="Assets\Takahashi\Scripts\ViewportPoint.cs" />
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
