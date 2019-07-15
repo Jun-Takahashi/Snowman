@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CoilMove : MonoBehaviour
 {
@@ -14,10 +15,15 @@ public class CoilMove : MonoBehaviour
 
     private bool MoveFlag; //動かすフラグ
 
+    AudioSource audioSource;
+    [SerializeField]
+    public AudioClip coilSE = null;
+
     // Start is called before the first frame update
     void Start()
     {
         SparkFlag = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,6 +60,7 @@ public class CoilMove : MonoBehaviour
     {
         transform.localScale = new Vector3(size, 1f, size);
         particle.transform.localScale = new Vector3(Psize, 0.1f, Psize);
+        audioSource.PlayOneShot(coilSE);
         SparkFlag = false;
     }
 

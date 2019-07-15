@@ -16,7 +16,6 @@ public class HpBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //hpBar.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

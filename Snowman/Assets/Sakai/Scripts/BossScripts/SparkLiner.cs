@@ -50,11 +50,6 @@ public class SparkLiner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (coilPositions == null && bossManager.sparkFlag)
-        //{
-        //    coilPositions = FindObjectTag(coilPositions, "CoilPos");
-        //}
-
         if (NewCoilFlag)
         {
             NewTime = TimeCount(NewTime);

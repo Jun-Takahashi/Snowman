@@ -22,8 +22,7 @@ public class PlasmaPower : MonoBehaviour
         float TamaSize = transform.localScale.x / 10;
         particle.transform.localScale = new Vector3(TamaSize, TamaSize, TamaSize);
         particle.transform.GetChild(0).localScale = new Vector3(TamaSize * 40, TamaSize * 40,TamaSize * 40);
-
-
+        
     }
 }
 
