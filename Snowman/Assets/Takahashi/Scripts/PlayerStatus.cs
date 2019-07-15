@@ -16,6 +16,8 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField, Header("プレイヤーの連射速度")]
     public float FireSpeed = 1;
     public float Lv1FireSpeed = 1;
+    [SerializeField, Header("リスポーンオブジェクト")]
+    public GameObject ReSpawnGO;
 
     private float span;
     private float Charge;
@@ -26,7 +28,6 @@ public class PlayerStatus : MonoBehaviour
     private float InvinciblyTime;
     private float high;
     
-    private GameObject ReSpawnGO;
     private bool active;
     private float activeTime;
 
@@ -41,8 +42,6 @@ public class PlayerStatus : MonoBehaviour
         Charge = 0;
         chargeP = 1;
         x = 0; z = 0;
-
-        ReSpawnGO = GameObject.Find("PlayerReSpawn");
 
         childCheck = transform.childCount;
         nuton = transform.GetChild(0).gameObject;
