@@ -5775,6 +5775,7 @@ MonoBehaviour:
   Enemys:
   - {fileID: 3084361066476971090, guid: 5172159f108470c459800e908817e176, type: 3}
   Boss: {fileID: 2663624028340833818, guid: c3a81e0fe2df1af4a9fae8a2b30c2033, type: 3}
+  BossPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1641652332
 Transform:
   m_ObjectHideFlags: 0
@@ -6011,6 +6012,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 975778418805285155, guid: 33cec3346bcbaeb479bfeda08e1fe2ce,
+        type: 3}
+      propertyPath: countDown
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33cec3346bcbaeb479bfeda08e1fe2ce, type: 3}
 --- !u!1001 &2669474518879673944
@@ -6174,6 +6180,11 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3192292817804074380, guid: 6d80797ec84b737498146af55dbc36d6,
+        type: 3}
+      propertyPath: eneFac
+      value: 
+      objectReference: {fileID: 1641652330}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d80797ec84b737498146af55dbc36d6, type: 3}
 --- !u!1001 &3757871841667791402

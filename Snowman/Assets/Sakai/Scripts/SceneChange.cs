@@ -59,6 +59,14 @@ public class SceneChange : MonoBehaviour
             {
                 SceneManager.LoadScene(ChangeScene(scene, 1));
             }
+            else if (player.GetComponent<ReSpawn>().Hp <= 0)
+            {
+                timeCount = TimeCounter(timeCount);
+                if (timeCount >= gameOverDelay)
+                {
+                    SceneManager.LoadScene(ChangeScene(scene, 1));
+                }
+            }
             else if (boss == null && eneFac == null)
                 boss = GameObject.Find("Nikola Tesla(Clone)");
             if (boss != null)
@@ -72,15 +80,6 @@ public class SceneChange : MonoBehaviour
                         SceneManager.LoadScene(ChangeScene(scene, 2));
                     }
                 }
-                else if (player.GetComponent<ReSpawn>().Hp <= 0)
-                {
-                    timeCount = TimeCounter(timeCount);
-                    if (timeCount >= gameOverDelay)
-                    {
-                        SceneManager.LoadScene(ChangeScene(scene, 1));
-                    }
-                }
-
             }
         }
         else
@@ -96,8 +95,8 @@ public class SceneChange : MonoBehaviour
     {
         if (sceneState == SceneState.title)
         {
-            //sceneName = "Stage1";
-            sceneName = "Sakai";
+            sceneName = "Stage1";
+            //sceneName = "Sakai";
         }
         else if (sceneState == SceneState.gameOver)
             sceneName = "TitleScene";
