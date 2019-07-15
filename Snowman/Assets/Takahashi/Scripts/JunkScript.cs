@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class JunkScript : MonoBehaviour
 {
+    int num;
     // Update is called once per frame
     void Update()
     {
-        if(transform.parent == null)
+        if(transform.parent == null && num==0)
         {
             gameObject.AddComponent<Rigidbody>();//重力を与える
+            num++;
         }
     }
 
