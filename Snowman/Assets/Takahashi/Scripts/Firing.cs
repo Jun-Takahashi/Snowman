@@ -186,6 +186,7 @@ public class Firing : MonoBehaviour
                     if (script.DamageCheck() <= chargeP)//自分より小さな弾に当たったら
                     {
                         int damage = script.DamageCheck();
+                        Destroy(collision.gameObject);//プレイヤーの弾を消す
                         chargeP -= damage;//小さくなって
                         setScale = false;
 
@@ -193,9 +194,9 @@ public class Firing : MonoBehaviour
                         {
                             GameObject Junk = transform.GetChild(childCheck).gameObject;
                             Junk.transform.parent = null;
-                        }
 
-                        Destroy(collision.gameObject);//プレイヤーの弾を消す
+                            damage = 0;
+                        }
                     }
                 }
             }
