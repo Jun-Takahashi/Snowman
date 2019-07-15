@@ -18,7 +18,7 @@ public class TimeCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countDown > 0)
+        if (countDown >= 0)
         {
             countDown = countDown -= Time.deltaTime;
             GetComponent<Text>().text = countDown.ToString("F2");

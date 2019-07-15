@@ -5347,11 +5347,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6709785742963716000, guid: 91f954bc6625d564b96e30195919aa8e,
-        type: 3}
-      propertyPath: m_Name
-      value: DamageEffect
-      objectReference: {fileID: 0}
     - target: {fileID: 6709785742963716002, guid: 91f954bc6625d564b96e30195919aa8e,
         type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
@@ -5391,6 +5386,11 @@ PrefabInstance:
         type: 3}
       propertyPath: TrailModule.ratio
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6709785742963716000, guid: 91f954bc6625d564b96e30195919aa8e,
+        type: 3}
+      propertyPath: m_Name
+      value: DamageEffect
       objectReference: {fileID: 0}
     - target: {fileID: 6709785742963716003, guid: 91f954bc6625d564b96e30195919aa8e,
         type: 3}
