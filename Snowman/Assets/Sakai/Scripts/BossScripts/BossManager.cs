@@ -51,10 +51,10 @@ public class BossManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(BossHp);
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            BossDamage(20);
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    BossDamage(20);
+        //}
 
         if (BossHp < BossHpPinch && !pinchFlag)
         {

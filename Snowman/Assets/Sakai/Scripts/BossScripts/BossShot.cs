@@ -161,17 +161,8 @@ public class BossShot : MonoBehaviour
 
     public void MoveCheck()
     {
-        //if (bossManager.bossState == BossManager.BossState.Normal)
-        //{
-        //    reCastNum = reCast;
-        //    rapidFireNum = rapidFire;
-        //}
-        //else if (bossManager.bossState == BossManager.BossState.Pinch)
-        //{
         reCastNum = pinchReCast;
         rapidFireNum = pinchRapidFire;
-
-        //}
     }
 
 
