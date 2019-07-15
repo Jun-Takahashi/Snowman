@@ -33,6 +33,8 @@ public class BossManager : MonoBehaviour
     [SerializeField]
     private InstanceEffect instanceEffect;
 
+    
+
     public bool sparkFlag = false;
 
     public bool pinchFlag = false;
@@ -68,7 +70,6 @@ public class BossManager : MonoBehaviour
         {
             instanceEffect.EffectInstance(transform.position);
             transform.gameObject.SetActive(false);
-            //SceneManager.LoadScene("ClearScene");
         }
 
     }

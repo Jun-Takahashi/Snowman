@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InstanceEffect : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class InstanceEffect : MonoBehaviour
     public ParticleSystem particle = null;
 
     public bool startEffect = false;
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +17,13 @@ public class InstanceEffect : MonoBehaviour
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-    //    if (startEffect)
-    //    {
-
-    //    }
-    //}
+    void Update()
+    {
+        if (startEffect)
+        {
+            
+        }
+    }
 
     public void EffectInstance(Vector3 pos)
     {
@@ -31,9 +31,10 @@ public class InstanceEffect : MonoBehaviour
         {
             particle.transform.position = pos;
             Instantiate(particle);
-            //particle.Play();
             startEffect = true;
         }
     }
+
+    
 
 }

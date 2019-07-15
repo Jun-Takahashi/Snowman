@@ -10,7 +10,7 @@ public class TimeCount : MonoBehaviour
     //private float countTime = 0;
 
     [SerializeField, Header("制限時間")]
-    private float countDown = 180;
+    public float countDown = 180;
 
 
 
