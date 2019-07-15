@@ -32,10 +32,10 @@ public class ReSpawn : MonoBehaviour
         }
         
         #region 残機管理
-        if (Hp <= 0)
-        {
-            SceneManager.LoadScene("EndingScene");
-        }
+        //if (Hp <= 0)
+        //{
+        //    SceneManager.LoadScene("EndingScene");
+        //}
         #endregion
     }
 

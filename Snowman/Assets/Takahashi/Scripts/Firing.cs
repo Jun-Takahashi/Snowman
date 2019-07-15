@@ -159,39 +159,43 @@ public class Firing : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         #region　当たり判定
-        if (Player)//プレイヤーの弾
-        {
-            if (collision.gameObject.tag == "BulletE")
+        if(gameObject.tag=="Untagged")
+        { /*下飛ばし*/}
+        else{
+            if (Player == true)//プレイヤーの弾
             {
-                GameObject bullet = collision.gameObject;
-                Firing script = bullet.GetComponent<Firing>();
-                if(script.DamageCheck() < chargeP)//自分より小さな弾に当たったら
+                if (collision.gameObject.tag == "BulletE")
                 {
-                    chargeP += script.DamageCheck();//大きくなって
-                    setScale = false;
-                    Destroy(bullet);//相手を消す
+                    GameObject bullet = collision.gameObject;
+                    Firing script = bullet.GetComponent<Firing>();
+                    if (script.DamageCheck() < chargeP)//自分より小さな弾に当たったら
+                    {
+                        chargeP += script.DamageCheck();//大きくなって
+                        setScale = false;
+                        Destroy(bullet);//相手を消す
+                    }
                 }
             }
-        }
-        if(!Player)//エネミーの弾
-        {
-            if (collision.gameObject.tag == "BulletP")
+            if (Player == false)//エネミーの弾
             {
-                GameObject bullet = collision.gameObject;
-                Firing script = bullet.GetComponent<Firing>();
-                
-                Destroy(collision.gameObject);//プレイヤーの弾を消す
-
-                if (script.DamageCheck() <= chargeP)//自分より小さな弾に当たったら
+                if (collision.gameObject.tag == "BulletP")
                 {
-                    int damage = script.DamageCheck();
-                    chargeP -= damage;//小さくなって
-                    setScale = false;
+                    GameObject bullet = collision.gameObject;
+                    Firing script = bullet.GetComponent<Firing>();
 
-                    for(int i=0; i<damage*JunkNum; i++)
+                    if (script.DamageCheck() <= chargeP)//自分より小さな弾に当たったら
                     {
-                        GameObject Junk = transform.GetChild(childCheck).gameObject;
-                        Junk.transform.parent = null;
+                        int damage = script.DamageCheck();
+                        chargeP -= damage;//小さくなって
+                        setScale = false;
+
+                        for (int i = 0; i < damage * JunkNum; i++)
+                        {
+                            GameObject Junk = transform.GetChild(childCheck).gameObject;
+                            Junk.transform.parent = null;
+                        }
+
+                        Destroy(collision.gameObject);//プレイヤーの弾を消す
                     }
                 }
             }
