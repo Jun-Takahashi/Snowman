@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class SceneChange : MonoBehaviour
 {
@@ -19,6 +20,16 @@ public class SceneChange : MonoBehaviour
     [SerializeField, Header("ゲームオーバーまでの移行ディレイ")]
     public float gameOverDelay;
     float timeCount;
+
+    AudioSource audioSource;
+
+    [SerializeField, Header("選択SE")]
+    public AudioClip choiceSE;
+
+    [SerializeField, Header("SEのタイミング用待機時間")]
+    public float SEtime = 1;
+    bool changeFlag;
+
 
     enum SceneState
     {
@@ -47,7 +58,8 @@ public class SceneChange : MonoBehaviour
         else if (scene == "ClearScene")
             sceneState = SceneState.clear;
         number = 0;
-
+        audioSource = GetComponent<AudioSource>();
+        changeFlag = false;
     }
 
     // Update is called once per frame
@@ -86,7 +98,14 @@ public class SceneChange : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene(ChangeScene(scene, 0));
+                changeFlag = true;
+                audioSource.PlayOneShot(choiceSE);
+            }
+            if (changeFlag)
+            {
+                timeCount = TimeCounter(timeCount);
+                if (timeCount >= SEtime)
+                    SceneManager.LoadScene(ChangeScene(scene, 0));
             }
         }
     }
@@ -99,7 +118,10 @@ public class SceneChange : MonoBehaviour
             //sceneName = "Sakai";
         }
         else if (sceneState == SceneState.gameOver)
+        {
             sceneName = "TitleScene";
+
+        }
         else if (sceneState == SceneState.clear)
             sceneName = "TitleScene";
         else if (sceneState == SceneState.gamePlay)
