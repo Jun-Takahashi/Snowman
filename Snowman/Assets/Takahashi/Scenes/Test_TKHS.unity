@@ -269,6 +269,7 @@ MonoBehaviour:
   - {fileID: 3084361066476971090, guid: ea37fcdcc3a86904985a7ed4bf658d47, type: 3}
   - {fileID: 3084361066476971090, guid: cab5cd3d9ccd7634dafd0cadc0125d9c, type: 3}
   Boss: {fileID: 0}
+  BossPos: {x: 0, y: 0, z: 0}
 --- !u!4 &890730239
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,6 +1019,16 @@ PrefabInstance:
     - target: {fileID: 318200425225373213, guid: aef783a8620c2114c942da6c9eb79dce,
         type: 3}
       propertyPath: MaxCharge
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 318200425225373213, guid: aef783a8620c2114c942da6c9eb79dce,
+        type: 3}
+      propertyPath: Lv1FireSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 318200425225373213, guid: aef783a8620c2114c942da6c9eb79dce,
+        type: 3}
+      propertyPath: ChargeSpeed
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
