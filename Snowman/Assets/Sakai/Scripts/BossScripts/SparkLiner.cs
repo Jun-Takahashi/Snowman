@@ -53,7 +53,7 @@ public class SparkLiner : MonoBehaviour
         if (NewCoilFlag)
         {
             NewTime = TimeCount(NewTime);
-            if (NewTime > SparkTime)
+            if (NewTime >= SparkTime)
             {
                 NewCoil();
                 NewCoilFlag = false;
@@ -65,10 +65,10 @@ public class SparkLiner : MonoBehaviour
         if (coilInstance != null && coilInstance.transform.GetChild(0).GetComponent<CoilMove>().SparkFlag)
         {
             timeElapsed = TimeCount(timeElapsed);
-            if (timeElapsed > SparkTime)
+            if (timeElapsed >= SparkTime)
             {
                 timeElapsed2 = TimeCount(timeElapsed2);
-                Debug.Log("放電せよ！");
+                //Debug.Log("放電せよ！");
                 Sparking(coilInstance, ThunderPower);
                 if (timeElapsed2 > SparkingTime)
                 {
