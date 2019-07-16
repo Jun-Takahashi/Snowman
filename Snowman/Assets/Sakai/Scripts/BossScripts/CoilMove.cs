@@ -23,6 +23,7 @@ public class CoilMove : MonoBehaviour
     void Start()
     {
         SparkFlag = false;
+        MoveFlag = true;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -36,6 +37,7 @@ public class CoilMove : MonoBehaviour
         if (DistanceObject(transform.root.gameObject, distance) && !SparkFlag)
         {
             SparkFlag = true;
+            MoveFlag = false;
         }
 
     }
@@ -47,9 +49,9 @@ public class CoilMove : MonoBehaviour
     /// <param name="num">速度</param>
     public void Move(Vector3 distance, float num)
     {
-        MoveFlag = true;
         this.distance = distance;
         this.num = num;
+        MoveFlag = true;
     }
 
     /// <summary>

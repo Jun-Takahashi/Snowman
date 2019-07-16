@@ -33,7 +33,7 @@ public class BossMove : MonoBehaviour
     private Rigidbody bossRb; //ボスのRigidbody
 
     //目的地に着いているかどうか
-    private bool arrived;
+    //private bool arrived;
 
     [SerializeField, Header("移動までの待機時間")]
     public float interval = 6f;
@@ -57,7 +57,7 @@ public class BossMove : MonoBehaviour
         AddMovePoints(maxNum, BossMovePoint, MovePoints);
 
         bossRb = GetComponent<Rigidbody>();
-        arrived = true;
+        //arrived = true;
         BossMoveState = MoveState.Stop;
         bossManager = GetComponent<BossManager>();
     }
@@ -85,7 +85,7 @@ public class BossMove : MonoBehaviour
                         NextPoint(count, PMovePoints);
                     //RandomNextPoint(); //ランダムはダメなので修正する 2019/07/03
                     BossMoveState = MoveState.Move;
-                    arrived = false;
+                    //arrived = false;
                     tmpTime = 0;
                 }
                 break;
@@ -95,7 +95,7 @@ public class BossMove : MonoBehaviour
 
         if (Vector3.Distance(transform.position, destination) < 0.5f) //目的地に着いたか
         {
-            arrived = true; //着いた
+            //arrived = true; //着いた
             BossMoveState = MoveState.Stop; //待機に移行
         }
     }

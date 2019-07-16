@@ -31,7 +31,7 @@ public class BossManager : MonoBehaviour
     [SerializeField, Header("ダメージエフェクト")]
     private ParticleSystem damageEffect = null;
     [SerializeField]
-    private InstanceEffect instanceEffect;
+    private InstanceEffect instanceEffect = null;
 
     
 
@@ -50,12 +50,11 @@ public class BossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(BossHp);
         //if (Input.GetKeyDown(KeyCode.P))
         //{
         //    BossDamage(20);
         //}
-
+        #region ボスのピンチ状態処理
         if (BossHp < BossHpPinch && !pinchFlag)
         {
             bossMove.Crisis(bossMove.pinchInterval, bossMove.pinchSpeed);
@@ -66,12 +65,15 @@ public class BossManager : MonoBehaviour
             bossState = BossState.Pinch;
             bossShot.MoveCheck();
         }
+        #endregion
+
+        #region ボスの死亡処理
         if (BossHp <= 0)
         {
             instanceEffect.EffectInstance(transform.position);
             transform.gameObject.SetActive(false);
         }
-
+        #endregion
     }
 
     public float BossDamage(int damage)

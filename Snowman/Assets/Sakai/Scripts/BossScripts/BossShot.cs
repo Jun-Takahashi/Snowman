@@ -33,9 +33,6 @@ public class BossShot : MonoBehaviour
     //現在が弾を撃てる状態かを管理するフラグ
     public bool shotFlag;
 
-    //現在残っている弾の数
-    private int bulletCnt = 0;
-
     [SerializeField, Header("通常弾のパターン")]
     public List<int> pattern1;
     public List<int> pattern2;

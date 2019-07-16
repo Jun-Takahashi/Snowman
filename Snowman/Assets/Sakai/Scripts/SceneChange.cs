@@ -42,7 +42,7 @@ public class SceneChange : MonoBehaviour
 
     float bossHp;
 
-    int number = 0;
+    //int number;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +57,7 @@ public class SceneChange : MonoBehaviour
             sceneState = SceneState.gameOver;
         else if (scene == "ClearScene")
             sceneState = SceneState.clear;
-        number = 0;
+        //number = 0;
         audioSource = GetComponent<AudioSource>();
         changeFlag = false;
     }
@@ -65,6 +65,7 @@ public class SceneChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region ゲームプレイシーンの処理
         if (sceneState == SceneState.gamePlay)
         {
             if (timer.GetComponent<TimeCount>().countDown <= 0)
@@ -94,6 +95,9 @@ public class SceneChange : MonoBehaviour
                 }
             }
         }
+        #endregion
+
+        #region それ以外のシーン処理（タイトル、エンディング等）
         else
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -108,6 +112,7 @@ public class SceneChange : MonoBehaviour
                     SceneManager.LoadScene(ChangeScene(scene, 0));
             }
         }
+        #endregion
     }
 
     string ChangeScene(string sceneName, int num)
