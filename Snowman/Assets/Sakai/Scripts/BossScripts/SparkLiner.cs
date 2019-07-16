@@ -37,7 +37,8 @@ public class SparkLiner : MonoBehaviour
     [SerializeField, Header("放電を続ける時間")]
     public float SparkingTime = 0.2f;
 
-    public bool NewCoilFlag = false;
+    public bool NewCoilFlag;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,27 +46,32 @@ public class SparkLiner : MonoBehaviour
         //coilPositions = null;
         //bossManager = GetComponent<BossManager>();
         NewCoilFlag = false;
+        timeElapsed = 0;
+        timeElapsed2 = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (NewCoilFlag)
+        #region 新しいコイルを生成する
+        if (coilInstance == null && NewCoilFlag)
         {
             NewTime = TimeCount(NewTime);
-            if (NewTime >= SparkTime)
+            if (NewTime > SparkTime)
             {
                 NewCoil();
                 NewCoilFlag = false;
                 NewTime = 0;
-                //Debug.Log(223);
             }
-        }
 
+        }
+        #endregion
+
+        #region コイルが生成されていて、放電可能状態の時
         if (coilInstance != null && coilInstance.transform.GetChild(0).GetComponent<CoilMove>().SparkFlag)
         {
             timeElapsed = TimeCount(timeElapsed);
-            if (timeElapsed >= SparkTime)
+            if (timeElapsed > SparkTime)
             {
                 timeElapsed2 = TimeCount(timeElapsed2);
                 //Debug.Log("放電せよ！");
@@ -79,6 +85,7 @@ public class SparkLiner : MonoBehaviour
                 }
             }
         }
+        #endregion
     }
 
     /// <summary>
@@ -88,7 +95,7 @@ public class SparkLiner : MonoBehaviour
     void Shot(GameObject coil, float speed)
     {
         coil.transform.GetChild(0).GetComponent<CoilMove>()
-            .Move(coilPositions.transform.GetChild(Random.Range(0, (coilPositions.transform.childCount + 1)))
+            .Move(coilPositions.transform.GetChild(Random.Range(0, (coilPositions.transform.childCount)))
             .transform.position, speed);
     }
 

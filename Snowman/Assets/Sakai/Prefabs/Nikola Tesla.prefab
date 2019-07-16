@@ -378,7 +378,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2663624028340833818}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1290,11 +1290,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5523473780731681266, guid: 737c11c3318e9b24eb0e6b05606577a0,
-        type: 3}
-      propertyPath: m_FillRect
-      value: 
-      objectReference: {fileID: 7736018637148987377}
     - target: {fileID: 5523473780714471845, guid: 737c11c3318e9b24eb0e6b05606577a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1400,6 +1395,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5523473780731681266, guid: 737c11c3318e9b24eb0e6b05606577a0,
+        type: 3}
+      propertyPath: m_FillRect
+      value: 
+      objectReference: {fileID: 7736018637148987377}
     - target: {fileID: 5523473782328220765, guid: 737c11c3318e9b24eb0e6b05606577a0,
         type: 3}
       propertyPath: m_AnchorMax.x
