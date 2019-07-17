@@ -119,6 +119,7 @@ public class EnemyStatus : MonoBehaviour
         #region 死亡判定
         if (Hp <= 0)//HPが0になり死亡s
         {
+            GetComponent<InstanceEffect>().EffectInstance(transform.position);
             GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemyFac>().Count();
             Destroy(gameObject);
         }
