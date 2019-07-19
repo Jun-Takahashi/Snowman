@@ -127,3 +127,4 @@ MonoBehaviour:
   Bullet: {fileID: 7848613867076063587, guid: 287976807ab6a0e469170ca9cd314c48, type: 3}
   BulletPower: 0100000002000000
   FireSpeed: 1
+  ReloadTime: 2.5

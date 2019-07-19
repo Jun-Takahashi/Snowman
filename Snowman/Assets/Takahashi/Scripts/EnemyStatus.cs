@@ -21,7 +21,7 @@ public class EnemyStatus : MonoBehaviour
     private float span;//弾発射の間
     private float wavespan;//弾のパターンを繰り返す間
     private int nextPower;//次の弾の威力のListの要素番号
-
+    
     // Start is called before the first frame update
     public void SetPosition(List<Vector3> moveP)
     {
