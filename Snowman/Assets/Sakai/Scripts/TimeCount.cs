@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 public class TimeCount : MonoBehaviour
 {
     [SerializeField, Header("制限時間")]
-    public float countDown = 180;
-    
+    public float countDownNum = 180;
+    public static float countDown;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        countDown = countDownNum;
     }
 
     // Update is called once per frame

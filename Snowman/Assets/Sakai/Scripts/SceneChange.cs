@@ -12,8 +12,8 @@ public class SceneChange : MonoBehaviour
     public GameObject player = null;
     [SerializeField, Header("ボス")]
     public GameObject boss = null;
-    [SerializeField, Header("タイマー")]
-    public GameObject timer = null;
+    //[SerializeField, Header("タイマー")]
+    //public GameObject timer = null;
     [SerializeField, Header("エネミーファクトリー")]
     public GameObject eneFac = null;
 
@@ -68,7 +68,7 @@ public class SceneChange : MonoBehaviour
         #region ゲームプレイシーンの処理
         if (sceneState == SceneState.gamePlay)
         {
-            if (timer.GetComponent<TimeCount>().countDown <= 0)
+            if (TimeCount.countDown <= 0)
             {
                 SceneManager.LoadScene(ChangeScene(scene, 1));
             }

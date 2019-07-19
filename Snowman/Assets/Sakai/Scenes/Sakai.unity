@@ -1679,20 +1679,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: BurstEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 5003389229851948954, guid: a75baa884cc6b8441ab74f9d8b0229a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5003389229851948959, guid: a75baa884cc6b8441ab74f9d8b0229a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7806277
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5003389229851948959, guid: a75baa884cc6b8441ab74f9d8b0229a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5003389229851948959, guid: a75baa884cc6b8441ab74f9d8b0229a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5003389229851948959, guid: a75baa884cc6b8441ab74f9d8b0229a3,
         type: 3}
