@@ -139,7 +139,7 @@ public class BossShot : MonoBehaviour
 
         GameObject bulletInstance = Instantiate(bullet, transform.position + AdjustmentBullet, transform.rotation);
         Firing script = bulletInstance.GetComponent<Firing>();
-        script.SetTag(false, "Enemy");
+        script.SetTag(false, "Boss");
 
         script.Charge(Ilist[Pnum]);
         anim.SetTrigger("shot");

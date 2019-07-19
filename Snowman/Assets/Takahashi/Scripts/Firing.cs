@@ -63,6 +63,10 @@ public class Firing : MonoBehaviour
             {
                 velocity = new Vector3(-1, 0, -1);
             }
+            if (Enemys == "Boss")
+            {
+                velocity = new Vector3(0, 0, -1);
+            }
         }
         #endregion
 
@@ -114,14 +118,17 @@ public class Firing : MonoBehaviour
             //チャージ量に応じて大きさを変える
             //gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-            for (int i = 0; i < chargeP * JunkNum; i++)//ジャンクを威力分生成
+            if (Enemys == "Enemy")
             {
-                GameObject Junk = JunkObject[Random.Range(0, JunkObject.Count)];
-                Vector3 settingPos = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f));//ジャンクの位置決め
-                GameObject InstanceJ = Instantiate(Junk, settingPos, Quaternion.identity, transform);//生成時位置指定
-                InstanceJ.transform.Rotate(new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)), Random.Range(0, 361));//ジャンクの回転量決め
+                for (int i = 0; i < chargeP * JunkNum; i++)//ジャンクを威力分生成
+                {
+                    GameObject Junk = JunkObject[Random.Range(0, JunkObject.Count)];
+                    Vector3 settingPos = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f));//ジャンクの位置決め
+                    GameObject InstanceJ = Instantiate(Junk, settingPos, Quaternion.identity, transform);//生成時位置指定
+                    InstanceJ.transform.Rotate(new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)), Random.Range(0, 361));//ジャンクの回転量決め
 
-                InstanceJ.transform.localScale = InstanceJ.transform.localScale / chargeP;//スケールをジャンク自体に戻す。
+                    InstanceJ.transform.localScale = InstanceJ.transform.localScale / chargeP;//スケールをジャンク自体に戻す。
+                }
             }
 
             setScale = true;//スケール設定完了
@@ -193,7 +200,8 @@ public class Firing : MonoBehaviour
                         Destroy(collision.gameObject);//プレイヤーの弾を消す
                         chargeP -= damage;//小さくなって
                         setScale = false;
-
+                        
+                        if(Enemys == "Enemy")
                         for (int i = 0; i < damage * JunkNum; i++)
                         {
                             GameObject Junk = transform.GetChild(childCheck).gameObject;
