@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour
 {
     private List<Vector3> moveP;//移動する位置
-    public int Speed;//移動速度
+    public float Speed;//移動速度
     [SerializeField, Header("エネミーのHP")]
     public int Hp;
     [SerializeField, Header("エネミーの弾")]
