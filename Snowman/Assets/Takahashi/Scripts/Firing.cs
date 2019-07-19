@@ -30,7 +30,6 @@ public class Firing : MonoBehaviour
     public void Start()
     {
         setScale = false;
-        AbsorbSE = GetComponent<AudioSource>();
     }
     
     /// <summary>
@@ -45,6 +44,7 @@ public class Firing : MonoBehaviour
         {
             gameObject.tag = "BulletP";
             velocity = new Vector3(0, 0, 1);
+            AbsorbSE = GetComponent<AudioSource>();
             transform.parent = null;
         }
         if(!Player)
@@ -63,7 +63,7 @@ public class Firing : MonoBehaviour
             {
                 velocity = new Vector3(-1, 0, -1);
             }
-            if (Enemys == "Boss")
+            if (Enemys == "Boss")//ニコラ・テスラ
             {
                 velocity = new Vector3(0, 0, -1);
             }
