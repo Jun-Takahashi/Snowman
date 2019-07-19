@@ -254,12 +254,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveList:
   - pettern:
-    - {x: 5, y: 0, z: 5}
-    - {x: -5, y: 0, z: 5}
+    - {x: 0, y: 0, z: 25}
+    - {x: 5, y: 0, z: 10}
+    - {x: -5, y: 0, z: 10}
   - pettern:
+    - {x: 0, y: 0, z: 25}
     - {x: 0, y: 0, z: 15}
     - {x: 0, y: 0, z: 5}
   - pettern:
+    - {x: 0, y: 0, z: 25}
     - {x: 10, y: 0, z: 15}
     - {x: -10, y: 0, z: 15}
   selectPattern:
