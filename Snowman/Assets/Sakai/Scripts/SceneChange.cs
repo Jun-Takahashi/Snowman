@@ -17,6 +17,8 @@ public class SceneChange : MonoBehaviour
     [SerializeField, Header("エネミーファクトリー")]
     public GameObject eneFac = null;
 
+    public GameObject gameClearObj = null;
+
     [SerializeField, Header("ゲームオーバーまでの移行ディレイ")]
     public float gameOverDelay;
     float timeCount;
@@ -68,6 +70,10 @@ public class SceneChange : MonoBehaviour
         #region ゲームプレイシーンの処理
         if (sceneState == SceneState.gamePlay)
         {
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                SceneManager.LoadScene(ChangeScene(scene, 2));
+            }
             if (TimeCount.countDown <= 0)
             {
                 SceneManager.LoadScene(ChangeScene(scene, 1));
@@ -100,9 +106,19 @@ public class SceneChange : MonoBehaviour
         #region それ以外のシーン処理（タイトル、エンディング等）
         else
         {
+            if (sceneState == SceneState.clear)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha5)) { 
+                    gameClearObj.GetComponent<GameClear>().Reset();
+                    Debug.Log("スコアをリセットしました");
+                }
+
+            }
             if (Input.GetKeyDown(KeyCode.Space) ||
                 Input.GetButtonDown("Fire1"))
             {
+                if (sceneState == SceneState.clear)
+                    gameClearObj.GetComponent<GameClear>().Save();
                 changeFlag = true;
                 audioSource.PlayOneShot(choiceSE);
             }
@@ -112,6 +128,7 @@ public class SceneChange : MonoBehaviour
                 if (timeCount >= SEtime)
                     SceneManager.LoadScene(ChangeScene(scene, 0));
             }
+
         }
         #endregion
     }
