@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4271588036545701154}
   - component: {fileID: 5416634398949964244}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: PlasmaBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,9 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1153202808b50b243bde5186f66da9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  JunkObject: []
+  Speed: 15
   distanceP: 0.5
-  Size: 0.5
+  Size: 0.8
+  JunkNum: 0
 --- !u!54 &4271588036545701154
 Rigidbody:
   m_ObjectHideFlags: 0
