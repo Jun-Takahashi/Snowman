@@ -21,7 +21,6 @@ public class EnemyStatus : MonoBehaviour
     private float span;//弾発射の間
     private float wavespan;//弾のパターンを繰り返す間
     private int nextPower;//次の弾の威力のListの要素番号
-    //private bool set;//最終地点についたか否か
 
     // Start is called before the first frame update
     public void SetPosition(List<Vector3> moveP)
@@ -33,7 +32,6 @@ public class EnemyStatus : MonoBehaviour
         span = 0;
         wavespan = ReloadTime;
         nextPower = 0;
-        //set = false;
     }
 
     // Update is called once per frame
@@ -42,22 +40,18 @@ public class EnemyStatus : MonoBehaviour
         #region 移動処理
 
         #region　傑作
-        if (Vector3.Distance(transform.position, target) < 0.001)
-        {
-            if (Vector3.Distance(transform.position, distination) < 0.001)//終着点にてループ
-            {
-                targetC--;
-                target = moveP[targetC];
-            }
-            else
+            if (Vector3.Distance(transform.position, target) < 0.8)
             {
                 targetC++;
                 target = moveP[targetC];
             }
-        }
+            if (Vector3.Distance(transform.position, distination) < 1)//終着点にてループ
+            {
+                targetC = 1;
+                target = moveP[targetC];
+            }
 
-        transform.position = Vector3.Lerp(transform.position, target, Vector3.Distance(transform.position, target) / Speed * Time.deltaTime);
-
+            transform.position = Vector3.Lerp(transform.position, target, Vector3.Distance(transform.position, target) / Speed * Time.deltaTime);
         #endregion
 
         #region　駄作
