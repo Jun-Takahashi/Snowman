@@ -25,7 +25,10 @@ public class Firing : MonoBehaviour
     
     private int childCheck;//子オブジェクトが初期でいくつあるか
 
-    private AudioSource AbsorbSE;//吸収SE
+    private AudioSource audio;
+    [SerializeField,Header("SoundEffects")]
+    public AudioClip AbsorbSE;//吸収音
+    public AudioClip ExplosionSE;//爆発音
 
     public void Start()
     {
@@ -44,7 +47,7 @@ public class Firing : MonoBehaviour
         {
             gameObject.tag = "BulletP";
             velocity = new Vector3(0, 0, 1);
-            AbsorbSE = GetComponent<AudioSource>();
+            audio = GetComponent<AudioSource>();
             transform.parent = null;
         }
         if(!Player)
@@ -183,7 +186,14 @@ public class Firing : MonoBehaviour
                         setScale = false;
                         Destroy(bullet);//相手を消す
 
-                        AbsorbSE.PlayOneShot(AbsorbSE.clip);//吸収音を流す
+                        audio.PlayOneShot(AbsorbSE);//吸収音を流す
+                    }
+                }
+                if(collision.gameObject.tag == "Enemy")
+                {
+                    if (collision.gameObject.GetComponent<EnemyStatus>().Hp < chargeP)
+                    {
+                        audio.PlayOneShot(ExplosionSE);
                     }
                 }
             }

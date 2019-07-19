@@ -21,9 +21,7 @@ public class EnemyStatus : MonoBehaviour
     private float span;//弾発射の間
     private float wavespan;//弾のパターンを繰り返す間
     private int nextPower;//次の弾の威力のListの要素番号
-
-    private AudioSource ExplosionSE;
-
+    
     // Start is called before the first frame update
     public void SetPosition(List<Vector3> moveP)
     {
@@ -34,8 +32,6 @@ public class EnemyStatus : MonoBehaviour
         span = 0;
         wavespan = ReloadTime;
         nextPower = 0;
-
-        ExplosionSE = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -119,9 +115,6 @@ public class EnemyStatus : MonoBehaviour
         {
             GetComponent<InstanceEffect>().EffectInstance(transform.position);
             GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemyFac>().Count();
-
-            ExplosionSE.PlayOneShot(ExplosionSE.clip);
-
             Destroy(gameObject);
         }
         #endregion
