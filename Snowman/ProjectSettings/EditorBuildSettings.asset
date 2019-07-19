@@ -8,19 +8,28 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sakai/Scenes/TitleScene.unity
     guid: d8d3d6fe0daafd4458d2fb28d3ed309e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sakai/Scenes/Sakai.unity
     guid: 6fbd5ff9dac8db7409ac5f0a74c7b9db
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sakai/Scenes/EndingScene.unity
     guid: 436aa9b6be558e142abe4838019d9b9e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sakai/Scenes/ClearScene.unity
     guid: 7e6158c83eadcde4db380eaaef4b6e9a
   - enabled: 1
-    path: Assets/ooishi/Scene/Title 2.unity
+    path: Assets/Scenes/TitleScene.unity
     guid: a7690e5730e33a74fac3132e5501cfdc
+  - enabled: 1
+    path: Assets/Scenes/Stage1.unity
+    guid: 7e440beb3b7a1d04692bd0308a1da3ad
+  - enabled: 1
+    path: Assets/Scenes/EndingScene.unity
+    guid: 0ba886f921cea3b4f812462796c2dc84
+  - enabled: 1
+    path: Assets/Scenes/ClearScene.unity
+    guid: 014584734885c684082784375facb714
   m_configObjects: {}

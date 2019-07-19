@@ -100,7 +100,8 @@ public class SceneChange : MonoBehaviour
         #region それ以外のシーン処理（タイトル、エンディング等）
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) ||
+                Input.GetButtonDown("Fire1"))
             {
                 changeFlag = true;
                 audioSource.PlayOneShot(choiceSE);
