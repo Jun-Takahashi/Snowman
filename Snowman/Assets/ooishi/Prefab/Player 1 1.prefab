@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cc2075c46ba204394dbcc9987647fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 0.7
   Bullet: {fileID: 7848613867076063587, guid: e14513dc10640b542bae1a2e895e94ea, type: 3}
   MaxCharge: 3
   ChargeSpeed: 1
