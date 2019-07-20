@@ -191,6 +191,8 @@ MonoBehaviour:
   distanceP: 0.5
   Size: 0.8
   JunkNum: 0
+  AbsorbSE: {fileID: 8300000, guid: 998739db7b1f1f94a8acfaf6c3de2059, type: 3}
+  ExplosionSE: {fileID: 8300000, guid: 934d654217743fa41bf26a79edaa74fb, type: 3}
 --- !u!54 &7518503657188194520
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4883,7 +4885,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 998739db7b1f1f94a8acfaf6c3de2059, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7b30e6fd36ef03e4d8bac347bd1ae66b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
