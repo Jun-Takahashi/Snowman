@@ -462,8 +462,8 @@ MonoBehaviour:
   timeElapsed2: 1
   coil: {fileID: 100000, guid: c46a529abd2dcd244b8ce9c22615cddf, type: 3}
   coilSpeed: 0.4
-  ThunderPower: 7
-  ParticlePower: 1
+  ThunderPower: 14
+  ParticlePower: 2
   SparkTime: 2
   SparkingTime: 1
   NewCoilFlag: 0
@@ -482,15 +482,15 @@ MonoBehaviour:
   Bullet: {fileID: 4172748077447155449, guid: a136f95b3757607449613e389e925c6c, type: 3}
   bossManager: {fileID: 2075973706126713316}
   reCast: 0.3
-  pinchReCast: 0.2
+  pinchReCast: 0.1
   rapidFire: 0.5
-  pinchRapidFire: 0.5
+  pinchRapidFire: 0.3
   shotFlag: 0
-  pattern1: 0300000002000000
-  pattern2: 030000000200000003000000
-  pattern3: 0300000001000000
-  patternA: 0400000002000000
-  patternB: 0400000001000000
+  pattern1: 03000000030000000200000002000000
+  pattern2: 03000000020000000200000003000000
+  pattern3: 03000000
+  patternA: 040000000200000004000000
+  patternB: 040000000200000004000000
   rightOrLeft: 0
   AdjustmentBullet: {x: -2, y: 0, z: 0}
   anim: {fileID: 6471188398574082197}
